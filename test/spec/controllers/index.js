@@ -4,7 +4,7 @@ describe('Controller: indexCtrl', function () {
   var $scope, createController, cartServices, $controller, $rootScope;
 
   beforeEach(function () {
-    module('yeomanLetusgoApp');
+    module('letusgoApp');
 
     inject(function ($injector) {
 

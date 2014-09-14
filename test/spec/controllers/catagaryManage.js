@@ -3,7 +3,7 @@ describe('Controller: catagaryManagageCtrl', function () {
   var $scope, createController, catagaryService, $controller;
 
   beforeEach(function () {
-    module('yeomanLetusgoApp');
+    module('letusgoApp');
 
     inject(function ($injector) {
 

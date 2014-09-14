@@ -4,7 +4,7 @@ describe('controller: welcome index', function () {
   var $scope, creatController, $controller;
 
   beforeEach(function () {
-    module('yeomanLetusgoApp');
+    module('letusgoApp');
 
     inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();

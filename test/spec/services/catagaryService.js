@@ -3,7 +3,7 @@ describe('Service: catagaryService', function () {
   var catagaryService, store = {}, localStorageService, $scope;
 
   beforeEach(function () {
-    module('yeomanLetusgoApp');
+    module('letusgoApp');
     inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();
       localStorageService = $injector.get('localStorageService');
