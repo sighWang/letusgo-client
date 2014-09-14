@@ -22,7 +22,7 @@ describe('Controller: EditCatagaryCtrl', function () {
 
   describe('editCatagary.js', function () {
     it('catagary should be get', function () {
-      spyOn(catagaryService, 'getStoreCatagary').andReturn({id: '4', name: '5'});
+      spyOn(catagaryService, 'getStoreCatagary').and.returnValue({id: '4', name: '5'});
       createController();
       expect($scope.catagary).toEqual(jasmine.any(Object));
     });

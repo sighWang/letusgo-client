@@ -9,11 +9,11 @@ describe('Service: catagaryService', function () {
       localStorageService = $injector.get('localStorageService');
       catagaryService = $injector.get('catagaryService');
     });
-    spyOn(localStorageService, 'get').andCallFake(function (key) {
+    spyOn(localStorageService, 'get').and.callFake(function (key) {
       return store[key];
     });
 
-    spyOn(localStorageService, 'set').andCallFake(function (key, value) {
+    spyOn(localStorageService, 'set').and.callFake(function (key, value) {
       store[key] = value;
     });
     initData(localStorageService);

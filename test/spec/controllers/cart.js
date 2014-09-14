@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: indexCtrl', function () {
+describe('Controller: CatrCtrl should be test correct ', function () {
   var $scope, createController, cartService, $controller;
 
   beforeEach(function () {
@@ -20,7 +20,7 @@ describe('Controller: indexCtrl', function () {
     });
   });
 
-  describe('cart.js', function () {
+  describe('cart.js should be test correct', function () {
     it('cart should be highLight', function () {
       spyOn($scope, '$emit');
       createController();

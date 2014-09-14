@@ -10,11 +10,11 @@
         localStorageService = $injector.get('localStorageService');
         cartService = $injector.get('cartService');
       });
-      spyOn(localStorageService, 'get').andCallFake(function (key) {
+      spyOn(localStorageService, 'get').and.callFake(function (key) {
         return storeCart[key];
       });
 
-      spyOn(localStorageService, 'set').andCallFake(function (key, value) {
+      spyOn(localStorageService, 'set').and.callFake(function (key, value) {
         storeCart[key] = value;
       });
       initData(localStorageService);
@@ -62,8 +62,9 @@
     });
     it('getCartNumber: should be a number', function () {
       expect(cartService.getCartNumber()).toEqual(jasmine.any(Number));
+      var length = cartService.getCartNumber();
       cartService.addGoodsNumberById('ITEM000003');
-      expect(cartService.getCartNumber()).toEqual(1);
+      expect(cartService.getCartNumber()).toEqual( length + 1);
     });
     it('getCatagary: should be catagary', function () {
       cartService.getCatagary();
