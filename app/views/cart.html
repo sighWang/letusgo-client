@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">我的购物车------let us go</div>
+    <div class="panel-body">
+      <div class="panel panel-default" ng-repeat="catagary in catagarys">
+        <div class="panel-heading">{{catagary[0].goods.catagary}}</div>
+        <div class="panel-body">
+          <div class="row" ng-repeat="item in catagary">
+            <div class="col-md-2">{{item.goods.name}}</div>
+            <div class="col-md-2">{{item.goods.price + '元/' + item.goods.unit}}</div>
+            <div class="col-md-4 btn-group">
+              <button type="button" class="btn btn-default" ng-click="minusOneToCart(item)">-</button>
+              <button type="button" class="btn btn-default" disabled="disabled">{{item.number + item.goods.unit}}
+              </button>
+              <button type="button" class="btn btn-default" ng-click="addOneToCart(item)">+</button>
+            </div>
+            <div class="col-md-2">共{{item.number * item.goods.price}}元</div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-offset-8 col-md-2">
+          <div class="thumbnail">
+                      <span>
+                         总计:{{total}}元<a ng-href="#/pay" class="btn btn-primary btn-lg" role="button">PAY</a>
+                      </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

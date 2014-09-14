@@ -1,0 +1,46 @@
+<div id="goodsList" class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">商品管理</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-3">
+          <button type="button" class="btn btn-defualt"><a ng-href="#/addGoods">添加新商品</a></button>
+        </div>
+        <div class="input-group col-lg-3" >
+          <input type="text" class="form-control" placeholder="搜索" ng-model="search">
+           <span class="input-group-btn">
+             <button class="btn btn-default" type="button">search</button>
+           </span>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>名称</th>
+          <th>单位</th>
+          <th>单价</th>
+          <th>分类</th>
+          <th>删除</th>
+          <th>修改</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="goods in goodsList | filter:search">
+          <td>{{goods.id}}</td>
+          <td>{{goods.name}}</td>
+          <td>{{goods.unit}}</td>
+          <td>{{goods.price}}</td>
+          <td>{{goods.catagary}}</td>
+          <td>
+            <a ng-click="removeItem(goods)">删除</a>
+          </td>
+          <td>
+            <a ng-href="#/editGoods" ng-click="showEdit(goods)">修改</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="input-group  col-md-7 col-md-offset-2">
+    <span class="input-group-addon">id</span>
+    <input type="text" class="form-control" ng-model="goods.id">
+  </div>
+  <div class="input-group col-md-7 col-md-offset-2">
+    <span class="input-group-addon">name</span>
+    <input type="text" class="form-control" ng-model="goods.name">
+  </div>
+  <div class="input-group col-md-7 col-md-offset-2">
+    <span class="input-group-addon">unit</span>
+    <input type="text" class="form-control" ng-model="goods.unit">
+  </div>
+  <div class="input-group col-md-7 col-md-offset-2">
+    <span class="input-group-addon">price</span>
+    <input type="text" class="form-control" ng-model="goods.price">
+  </div>
+  <div class="input-group col-md-7 col-md-offset-2">
+    <span class="input-group-addon">catagary</span>
+    <select ng-model="goods.catagary" class="form-control">
+      <option ng-repeat="catagary in catagarys">{{catagary.name}}</option>
+    </select>
+  </div>
+  <div class="input-group col-md-7 col-md-offset-2  text-right">
+    <a ng-href="#/listManage" ng-click="add(goods)">提交修改</a>
+  </div>
+</div>

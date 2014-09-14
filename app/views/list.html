@@ -1,0 +1,17 @@
+<div id="goodsList" class="container">
+  <div class="row">
+    <div class="col-md-3" ng-repeat="goods in goodsList">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{goods.name}}</h3>
+
+          <p>单价：{{ goods.price }}(元)</p>
+
+          <p>
+            <button class="btn btn-primary" role="button" ng-click="addOneToCart(goods)">加入购物车</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

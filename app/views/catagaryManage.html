@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">类别管理</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-3">
+          <button class="btn btn-defualt"><a ng-href="#/addCatagary">添加新类别</a></button>
+        </div>
+        <div class="input-group col-lg-3">
+          <input type="text" class="form-control" placeholder="搜索" ng-model="search">
+           <span class="input-group-btn">
+             <button class="btn btn-default" type="button">search</button>
+           </span>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>名称</th>
+          <th>删除</th>
+          <th>修改</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="catagary in catagarys |filter:{name:search}">
+          <td>{{catagary.id}}</td>
+          <td>{{catagary.name}}</td>
+          <td>
+            <a ng-click="removeItem(catagary)">删除</a>
+          </td>
+          <td>
+            <a ng-href="#/editCatagary" ng-click="showEdit(catagary)">修改</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
