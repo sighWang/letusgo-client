@@ -1,5 +1,5 @@
 'use strict';
-angular.module('yeomanLetusgoApp')
+angular.module('letusgoApp')
     .controller('ListCtrl', function ($scope, cartService) {
         $scope.$emit('listHighLight');
         $scope.goodsList = cartService.getGoodslist();

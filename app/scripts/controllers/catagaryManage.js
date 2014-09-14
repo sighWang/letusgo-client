@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('yeomanLetusgoApp')
+angular.module('letusgoApp')
     .controller('CatagaryManageCtrl', function ($scope, catagaryService) {
         $scope.catagarys = catagaryService.getCatagarys();
 

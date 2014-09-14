@@ -1,5 +1,5 @@
 'use strict';
-angular.module('yeomanLetusgoApp')
+angular.module('letusgoApp')
   .service('MyStorageService', function MyStorageService(localStorageService) {
     this.initData = function (localStorageService) {
       var goodsList = [];

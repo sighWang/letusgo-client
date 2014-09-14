@@ -1,5 +1,5 @@
 'use strict';
-angular.module('yeomanLetusgoApp')
+angular.module('letusgoApp')
     .controller('IndexCtrl', function ($scope, cartService, localStorageService) {
         initData(localStorageService);
 

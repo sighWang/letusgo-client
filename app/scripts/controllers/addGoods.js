@@ -1,5 +1,5 @@
 'use strict';
-angular.module('yeomanLetusgoApp')
+angular.module('letusgoApp')
     .controller('AddGoodsCtrl', function ($scope, goodsListService, catagaryService) {
         $scope.add = function (goods) {
             goodsListService.addGoods(goods);

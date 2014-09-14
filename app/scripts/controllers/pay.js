@@ -1,5 +1,5 @@
 'use strict';
-angular.module('yeomanLetusgoApp')
+angular.module('letusgoApp')
     .controller('PayCtrl', function ($scope, cartService) {
         $scope.$emit('payHighLight');
 

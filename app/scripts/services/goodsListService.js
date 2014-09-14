@@ -1,6 +1,6 @@
 'use strict';
 (function (_) {
-  angular.module('yeomanLetusgoApp')
+  angular.module('letusgoApp')
     .service('goodsListService', function GoodsListService(localStorageService) {
       this.goodsList = localStorageService.get('goodsList');
       this.getGoodslist = function () {

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('yeomanLetusgoApp')
+angular.module('letusgoApp')
     .controller('WelcomeCtrl', function ($scope) {
         $scope.$emit('welcomeHighLight');
     });
