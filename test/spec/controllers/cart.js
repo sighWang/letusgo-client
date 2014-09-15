@@ -1,32 +1,38 @@
 'use strict';
 
 describe('Controller: CatrCtrl should be test correct ', function () {
-  var $scope, createController, cartService, $controller;
+  var $scope, createController, cartService, $controller, localStorageService,  storageService;
 
-//  beforeEach(function () {
-//    module('letusgoApp');
-//
-//    inject(function ($injector) {
-//
-//      $scope = $injector.get('$rootScope').$new();
-//      $controller = $injector.get('$controller');
-//      cartService = $injector.get('cartService');
-//
-//      createController = function () {
-//        return $controller('CartCtrl', {
-//          $scope: $scope
-//        });
-//      };
-//    });
-//  });
-//
-//  describe('cart.js should be test correct', function () {
-//    it('cart should be highLight', function () {
-//      spyOn($scope, '$emit');
-//      createController();
-//      expect($scope.$emit).toHaveBeenCalledWith('cartHighLight');
-//    });
-//
+  beforeEach(function () {
+    module('letusgoApp');
+
+    inject(function ($injector) {
+
+      $scope = $injector.get('$rootScope').$new();
+      $controller = $injector.get('$controller');
+      cartService = $injector.get('cartService');
+      localStorageService = $injector.get('localStorageService');
+      storageService = $injector.get('StorageService');
+      createController = function () {
+        return $controller('CartCtrl', {
+          $scope: $scope
+        });
+      };
+    });
+    storageService.initData();
+  });
+
+  describe('cart.js should be test correct', function () {
+    it('cart should be highLight', function () {
+      spyOn($scope, '$emit');
+      spyOn(localStorageService,'get').and.callFake(function () {
+        return [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}];
+      });
+      createController();
+      localStorageService.set('customGoodsList',{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2});
+      expect($scope.$emit).toHaveBeenCalledWith('cartHighLight');
+    });
+
 //    it('$scope.categorys: should be a number', function () {
 //      createController();
 //      expect($scope.categorys).toEqual(jasmine.any(Object));
