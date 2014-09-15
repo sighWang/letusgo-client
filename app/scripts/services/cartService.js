@@ -10,7 +10,7 @@
       };
 
       this.getGoodslist = function () {
-        return this.goodsList;
+        return localStorageService.get('goodsList');
       };
 
       this.editCustomGoodsList = function (customGoodsList) {
@@ -19,7 +19,7 @@
 
       this.addGoodsNumberById = function (id) {
         var index = -1;
-        var customGoodsList = this.customGoodsList;
+        var customGoodsList = localStorageService.get('customGoodsList');
 
         for (var i = 0; i < customGoodsList.length; i++) {
           if (_.contains(customGoodsList[i].goods, id)) {
@@ -31,7 +31,7 @@
           customGoodsList[index].number++;
         }
         else {
-          var _goodsList = this.goodsList;
+          var _goodsList = localStorageService.get('goodsList');
           var item = _.find(_goodsList, {'id': id});
           var customGoods = {goods:item, number:1};
           customGoodsList.push(customGoods);
@@ -43,7 +43,7 @@
 
       this.minusGoodsNumberById = function (id) {
         var index = -1;
-        var customGoodsList = this.customGoodsList;
+        var customGoodsList = localStorageService.get('customGoodsList');
         for (var i = 0; i < customGoodsList.length; i++) {
           if (_.contains(customGoodsList[i].goods, id)) {
             index = i;
@@ -71,7 +71,7 @@
       };
 
       this.getCartNumber = function () {
-        var customGoodsList = this.customGoodsList;
+        var customGoodsList = localStorageService.get('customGoodsList');
         var cartNumber = 0;
         if (customGoodsList) {
           for (var i = 0; i < customGoodsList.length; i++) {
