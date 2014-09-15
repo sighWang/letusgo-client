@@ -1,6 +1,6 @@
 'use strict';
 describe('Service: categoryService', function () {
-  var categoryService, store = {}, localStorageService, $scope ,storageService;
+  var categoryService, store = {}, localStorageService, $scope , storageService;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -50,4 +50,3 @@ describe('Service: categoryService', function () {
     expect(categoryService.categorys.length).toEqual(length + 1);
   });
 });
-
