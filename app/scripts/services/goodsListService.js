@@ -20,19 +20,19 @@
       };
 
       this.editGoods = function (goods) {
-        var goodsList = this.goodsList;
+        var goodsList = localStorageService.get('goodsList');
         var index = _.findIndex(goodsList, {'id': goods.id});
         this.goodsList[index] = goods;
         this.editGoodsList(goodsList);
       };
 
       this.addGoods = function (goods) {
-        var goodsList = this.goodsList;
+        var goodsList = localStorageService.get('goodsList');
         goodsList.push(goods);
         this.editGoodsList(goodsList);
       };
       this.removeGoods = function (goods) {
-        var goodsList = this.goodsList;
+        var goodsList = localStorageService.get('goodsList');
         var index = _.findIndex(goodsList, {'id': goods.id});
         goodsList.splice(index, 1);
         this.editGoodsList(goodsList);
