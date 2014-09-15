@@ -47,16 +47,16 @@ angular
         templateUrl: 'views/listManage/addGoods.html',
         controller: 'AddGoodsCtrl'
       })
-      .when('/catagaryManage', {
-        templateUrl: 'views/catagaryManage.html',
+      .when('/categoryManage', {
+        templateUrl: 'views/categoryManage.html',
         controller: 'CategoryManageCtrl'
       })
-      .when('/editCatagary', {
-        templateUrl: 'views/catagaryManage/editCatagary.html',
+      .when('/editCategory', {
+        templateUrl: 'views/categoryManage/editCategory.html',
         controller: 'EditCategoryCtrl'
       })
-      .when('/addCatagary', {
-        templateUrl: 'views/catagaryManage/addCatagary.html',
+      .when('/addCategory', {
+        templateUrl: 'views/categoryManage/addCategory.html',
         controller: 'AddCategoryCtrl'
       })
 
