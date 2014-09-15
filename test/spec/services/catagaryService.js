@@ -1,6 +1,6 @@
 'use strict';
 describe('Service: categoryService', function () {
-  var categoryService, store = {}, localStorageService, $scope;
+  var categoryService, store = {}, localStorageService, $scope ,storageService;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -8,6 +8,7 @@ describe('Service: categoryService', function () {
       $scope = $injector.get('$rootScope').$new();
       localStorageService = $injector.get('localStorageService');
       categoryService = $injector.get('categoryService');
+      storageService = $injector.get('StorageService');
     });
     spyOn(localStorageService, 'get').and.callFake(function (key) {
       return store[key];
@@ -16,7 +17,7 @@ describe('Service: categoryService', function () {
     spyOn(localStorageService, 'set').and.callFake(function (key, value) {
       store[key] = value;
     });
-    initData(localStorageService);
+    storageService.initData();
   });
 
   it('categorys: should be defined', function () {
