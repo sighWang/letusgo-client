@@ -5,7 +5,7 @@ function initData(localStorageService) {
   var cocacola ={id:'ITEM000000', name:'可口可乐', unit:'瓶', price:3.00, category:'drink'};
   var sprite ={id:'ITEM000001', name:'雪碧', unit:'瓶', price:3.00, category:'drink'};
   var lychee = {id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'};
-  var badminton = new Goods('ITEM000003', '羽毛球', '个', 4.50, 'sport');
+  var badminton = {id:'ITEM000003', name:'羽毛球', unit:'个', price:4.50, category:'sport'};
   goodsList.push(cocacola, sprite, lychee, badminton);
   if (localStorageService.get('goodsList') === null) {
     localStorageService.set('goodsList', goodsList);
