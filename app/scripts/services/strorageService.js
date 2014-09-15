@@ -3,25 +3,15 @@ angular.module('letusgoApp')
   .service('MyStorageService', function MyStorageService(localStorageService) {
     this.initData = function (localStorageService) {
       var goodsList = [];
-      var cocacola = new Goods('ITEM000000', '可口可乐', '瓶', 3.00, 'drink');
-      var sprite = new Goods('ITEM000001', '雪碧', '瓶', 3.00, 'drink');
-      var lychee = new Goods('ITEM000002', '荔枝', '斤', 15.00, 'fruit');
-      var badminton = new Goods('ITEM000003', '羽毛球', '个', 4.50, 'sport');
+      var cocacola = {id: 'ITEM000000', name: '可口可乐', unit: '瓶', price: 3.00, category: 'drink'};
+      var sprite = {id: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3.00, category: 'drink'};
+      var lychee = {id: 'ITEM000002', name: '荔枝', unit: '斤', price: 15.00, category: 'fruit'};
+      var badminton = {id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'};
       goodsList.push(cocacola, sprite, lychee, badminton);
       if (localStorageService.get('goodsList') === null) {
         localStorageService.set('goodsList', goodsList);
       }
-      if (localStorageService.get('goodsList').length === 0) {
-        localStorageService.set('goodsList', goodsList);
-      }
 
-      if (localStorageService.get('catagarys').length === 0) {
-        localStorageService.set('catagarys', [
-          {id: 1, name: 'drink'},
-          {id: 2, name: 'fruit'},
-          {id: 3, name: 'sport'}
-        ]);
-      }
       if (localStorageService.get('catagarys') === null) {
         localStorageService.set('catagarys', [
           {id: 1, name: 'drink'},
@@ -29,6 +19,17 @@ angular.module('letusgoApp')
           {id: 3, name: 'sport'}
         ]);
       }
+//  if(localStorageService.get('goodsList').length === 0){
+//    localStorageService.set('goodsList', goodsList);
+//  }
+//
+//  if(localStorageService.get('catagarys').length === 0){
+//    localStorageService.set('catagarys', [
+//      {id: 1, name: 'drink'},
+//      {id: 2, name: 'fruit'},
+//      {id: 3, name: 'sport'}
+//    ]);
+//  }
       var customItemList = [];
       if (localStorageService.get('customGoodsList') === null) {
         localStorageService.set('customGoodsList', customItemList);
