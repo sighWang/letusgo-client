@@ -1,6 +1,6 @@
 'use strict';
 describe('Controller: ListmanageCtrl', function () {
-  var $scope, createController, goodsListService, $controller, storageService, localStorageService;
+  var $scope,storeCart = {}, createController, goodsListService, $controller, storageService, localStorageService;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -31,9 +31,9 @@ describe('Controller: ListmanageCtrl', function () {
 
   describe('goodsListManageCtrl add remove edit get', function () {
     it('should can get all goods', function () {
+      spyOn(goodsListService,'getGoodslist');
       createController();
-      expect($scope.goodsList).toEqual(jasmine.any(Object));
-      expect($scope.goodsList.length).toBeGreaterThan(0);
+      expect(goodsListService.getGoodslist).toHaveBeenCalled();
     });
 
     it('showEdit : goodsListService.storeGoods should be called', function () {
@@ -44,11 +44,11 @@ describe('Controller: ListmanageCtrl', function () {
     });
 
     it('removeItem : goodsList should be minus one', function () {
+      spyOn(goodsListService,'removeGoods');
       createController();
-      var length = $scope.goodsList.length;
       var badminton = {id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'};
       $scope.removeItem(badminton);
-      expect($scope.goodsList.length).toEqual(length - 1);
+      expect(goodsListService.removeGoods).toHaveBeenCalled();
     });
   });
 });
