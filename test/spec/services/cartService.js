@@ -1,13 +1,14 @@
 'use strict';
 (function (_) {
-  describe('Service: cartService', function () {
-    var cartService, storeCart = {}, localStorageService, $scope;
+  describe('Service: test cartService should be correct', function () {
+    var cartService, storeCart = {}, localStorageService, $scope , storageService;
 
     beforeEach(function () {
       module('letusgoApp');
       inject(function ($injector) {
         $scope = $injector.get('$rootScope').$new();
         localStorageService = $injector.get('localStorageService');
+        storageService = $injector.get('StorageService');
         cartService = $injector.get('cartService');
       });
       spyOn(localStorageService, 'get').and.callFake(function (key) {
@@ -17,10 +18,13 @@
       spyOn(localStorageService, 'set').and.callFake(function (key, value) {
         storeCart[key] = value;
       });
-      initData(localStorageService);
+      storageService.initData();
+      localStorageService.set('customGoodsList', [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}]);
     });
 
     it('getCustomGoodsList: result length should be a number', function () {
+      localStorageService.set('customGoodsList',
+        [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}]);
       expect(cartService.getCustomGoodsList().length).toEqual(jasmine.any(Number));
     });
 

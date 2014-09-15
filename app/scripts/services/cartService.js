@@ -6,7 +6,7 @@
       this.goodsList = localStorageService.get('goodsList');
 
       this.getCustomGoodsList = function () {
-        return this.customGoodsList;
+        return localStorageService.get('customGoodsList');
       };
 
       this.getGoodslist = function () {
