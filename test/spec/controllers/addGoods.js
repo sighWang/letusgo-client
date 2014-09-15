@@ -21,7 +21,7 @@ describe('Controller: addGoodsCtrl', function () {
   });
 
   describe('addGoods.js', function () {
-    it('catagary shoude be add', function () {
+    it('category shoude be add', function () {
       spyOn(goodsListService, 'addGoods');
       createController();
       $scope.add({id: '5', name: '5'});

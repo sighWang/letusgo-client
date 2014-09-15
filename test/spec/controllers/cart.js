@@ -27,9 +27,9 @@ describe('Controller: CatrCtrl should be test correct ', function () {
 //      expect($scope.$emit).toHaveBeenCalledWith('cartHighLight');
 //    });
 //
-//    it('$scope.catagarys: should be a number', function () {
+//    it('$scope.categorys: should be a number', function () {
 //      createController();
-//      expect($scope.catagarys).toEqual(jasmine.any(Object));
+//      expect($scope.categorys).toEqual(jasmine.any(Object));
 //    });
 //    it('addOneToCart:should call cartService.addGoodsNumberById', function () {
 //      createController();

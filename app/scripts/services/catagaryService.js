@@ -1,41 +1,41 @@
 'use strict';
 (function (_) {
   angular.module('letusgoApp')
-    .service('catagaryService', function (localStorageService) {
-      this.catagarys = localStorageService.get('catagarys');
-      this.getCatagarys = function () {
-        return localStorageService.get('catagarys');
+    .service('categoryService', function (localStorageService) {
+      this.categorys = localStorageService.get('categorys');
+      this.getCategorys = function () {
+        return localStorageService.get('categorys');
       };
 
-      this.storeCatagary = function (catagary) {
-        this.temporaryCatagary = catagary;
+      this.storeCategory = function (category) {
+        this.temporaryCategory = category;
       };
 
-      this.getStoreCatagary = function () {
-        return this.temporaryCatagary;
+      this.getStoreCategory = function () {
+        return this.temporaryCategory;
       };
 
-      this.editCatagary = function (catagary) {
-        var catagarys = this.catagarys;
-        var index = _.findIndex(catagarys, {'id': catagary.id});
-        this.catagarys[index] = catagary;
-        this.editCatagarys(catagarys);
+      this.editCategory = function (category) {
+        var categorys = this.categorys;
+        var index = _.findIndex(categorys, {'id': category.id});
+        this.categorys[index] = category;
+        this.editCategorys(categorys);
       };
 
-      this.editCatagarys = function (catagarys) {
-        localStorageService.set('catagarys', catagarys);
+      this.editCategorys = function (categorys) {
+        localStorageService.set('categorys', categorys);
       };
 
-      this.removeCatagary = function (catagary) {
-        var catagarys = this.catagarys;
-        var index = _.findIndex(catagarys, {'id': catagary.id});
-        catagarys.splice(index, 1);
-        this.editCatagarys(catagarys);
+      this.removeCategory = function (category) {
+        var categorys = this.categorys;
+        var index = _.findIndex(categorys, {'id': category.id});
+        categorys.splice(index, 1);
+        this.editCategorys(categorys);
       };
 
-      this.addCatagary = function (catagary) {
-        this.catagarys.push(catagary);
-        this.editCatagarys(this.catagarys);
+      this.addCategory = function (category) {
+        this.categorys.push(category);
+        this.editCategorys(this.categorys);
       };
     });
 })(window._);

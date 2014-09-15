@@ -81,12 +81,12 @@
         return cartNumber;
       };
 
-      this.getCatagary = function () {
+      this.getCategory = function () {
         var customGoodsList = this.customGoodsList;
-        var catagarys = _.groupBy(customGoodsList, function (customGoods) {
-          return customGoods.goods.catagary;
+        var categorys = _.groupBy(customGoodsList, function (customGoods) {
+          return customGoods.goods.category;
         });
-        return catagarys;
+        return categorys;
       };
     });
 })(window._);

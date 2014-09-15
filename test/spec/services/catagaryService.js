@@ -1,13 +1,13 @@
 'use strict';
-describe('Service: catagaryService', function () {
-  var catagaryService, store = {}, localStorageService, $scope;
+describe('Service: categoryService', function () {
+  var categoryService, store = {}, localStorageService, $scope;
 
   beforeEach(function () {
     module('letusgoApp');
     inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();
       localStorageService = $injector.get('localStorageService');
-      catagaryService = $injector.get('catagaryService');
+      categoryService = $injector.get('categoryService');
     });
     spyOn(localStorageService, 'get').and.callFake(function (key) {
       return store[key];
@@ -19,34 +19,34 @@ describe('Service: catagaryService', function () {
     initData(localStorageService);
   });
 
-  it('catagarys: should be defined', function () {
-    expect(catagaryService.catagarys.length).toEqual(jasmine.any(Number));
+  it('categorys: should be defined', function () {
+    expect(categoryService.categorys.length).toEqual(jasmine.any(Number));
   });
 
-  it('editCatagary: catagary should be update', function () {
-    spyOn(catagaryService, 'editCatagarys');
-    catagaryService.editCatagary({id: '4', name: '4'});
-    expect(catagaryService.editCatagarys).toHaveBeenCalled();
+  it('editCategory: category should be update', function () {
+    spyOn(categoryService, 'editCategorys');
+    categoryService.editCategory({id: '4', name: '4'});
+    expect(categoryService.editCategorys).toHaveBeenCalled();
   });
 
-  it('editCatagarys: catagarys should be uodate', function () {
-    catagaryService.editCatagarys([
+  it('editCategorys: categorys should be uodate', function () {
+    categoryService.editCategorys([
       {id: '4', name: '4'}
     ]);
-    expect(localStorageService.set).toHaveBeenCalledWith('catagarys', [
+    expect(localStorageService.set).toHaveBeenCalledWith('categorys', [
       {id: '4', name: '4'}
     ]);
   });
 
-  it('removeCatagary: catagarys should be delete one', function () {
-    var length = catagaryService.catagarys.length;
-    catagaryService.removeCatagary({id: '4', name: '4'});
-    expect(catagaryService.catagarys.length).toEqual(length - 1);
+  it('removeCategory: categorys should be delete one', function () {
+    var length = categoryService.categorys.length;
+    categoryService.removeCategory({id: '4', name: '4'});
+    expect(categoryService.categorys.length).toEqual(length - 1);
   });
-  it('addCatagary:catagarys should be add one', function () {
-    var length = catagaryService.catagarys.length;
-    catagaryService.addCatagary({id: '4', name: '4'});
-    expect(catagaryService.catagarys.length).toEqual(length + 1);
+  it('addCategory:categorys should be add one', function () {
+    var length = categoryService.categorys.length;
+    categoryService.addCategory({id: '4', name: '4'});
+    expect(categoryService.categorys.length).toEqual(length + 1);
   });
 });
 

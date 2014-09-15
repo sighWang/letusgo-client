@@ -66,7 +66,7 @@
       cartService.addGoodsNumberById('ITEM000003');
       expect(cartService.getCartNumber()).toEqual( length + 1);
     });
-//    it('getCatagary: should be catagary', function () {
+//    it('getCatagary: should be category', function () {
 //      cartService.getCatagary();
 //      spyOn(cartService, 'getCatagary');
 //      cartService.getCatagary();

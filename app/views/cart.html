@@ -2,10 +2,10 @@
   <div class="panel panel-primary">
     <div class="panel-heading">我的购物车------let us go</div>
     <div class="panel-body">
-      <div class="panel panel-default" ng-repeat="catagary in catagarys">
-        <div class="panel-heading">{{catagary[0].goods.catagary}}</div>
+      <div class="panel panel-default" ng-repeat="category in categorys">
+        <div class="panel-heading">{{category[0].goods.category}}</div>
         <div class="panel-body">
-          <div class="row" ng-repeat="item in catagary">
+          <div class="row" ng-repeat="item in category">
             <div class="col-md-2">{{item.goods.name}}</div>
             <div class="col-md-2">{{item.goods.price + '元/' + item.goods.unit}}</div>
             <div class="col-md-4 btn-group">

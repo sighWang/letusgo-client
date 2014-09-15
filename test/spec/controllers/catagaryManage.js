@@ -1,6 +1,6 @@
 'use strict';
-describe('Controller: catagaryManagageCtrl', function () {
-  var $scope, createController, catagaryService, $controller;
+describe('Controller: categoryManagageCtrl', function () {
+  var $scope, createController, categoryService, $controller;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -9,35 +9,35 @@ describe('Controller: catagaryManagageCtrl', function () {
 
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
-      catagaryService = $injector.get('catagaryService');
+      categoryService = $injector.get('categoryService');
 
       createController = function () {
-        return $controller('CatagaryManageCtrl', {
+        return $controller('CategoryManageCtrl', {
           $scope: $scope
         });
       };
     });
   });
 
-  describe('catagaryManageCtrl add remove edit get', function () {
-    it('should can get all catagary', function () {
+  describe('categoryManageCtrl add remove edit get', function () {
+    it('should can get all category', function () {
       createController();
-      expect($scope.catagarys).toEqual(jasmine.any(Object));
-      expect($scope.catagarys.length).toBeGreaterThan(0);
+      expect($scope.categorys).toEqual(jasmine.any(Object));
+      expect($scope.categorys.length).toBeGreaterThan(0);
     });
 
-    it('edit catagary', function () {
+    it('edit category', function () {
       createController();
-      spyOn(catagaryService, 'storeCatagary');
+      spyOn(categoryService, 'storeCategory');
       $scope.showEdit({id: '3', name: 'haha'});
-      expect(catagaryService.storeCatagary).toHaveBeenCalledWith({id: '3', name: 'haha'});
+      expect(categoryService.storeCategory).toHaveBeenCalledWith({id: '3', name: 'haha'});
     });
 
     it('remove Item', function () {
       createController();
-      spyOn(catagaryService, 'removeCatagary');
+      spyOn(categoryService, 'removeCategory');
       $scope.removeItem({id: '3', name: '4'});
-      expect(catagaryService.removeCatagary).toHaveBeenCalledWith({id: '3', name: '4'});
+      expect(categoryService.removeCategory).toHaveBeenCalledWith({id: '3', name: '4'});
     });
   });
 });

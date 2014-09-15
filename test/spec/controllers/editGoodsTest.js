@@ -26,7 +26,7 @@ describe('Controller: EditGoodsCtrl', function () {
       createController();
       expect($scope.goods).toEqual(jasmine.any(Object));
     });
-    it('catagaryService.editCatagary should be called', function () {
+    it('categoryService.editCategory should be called', function () {
       spyOn(goodsListService, 'editGoods');
       createController();
       $scope.edit({id: '4', name: '5'});

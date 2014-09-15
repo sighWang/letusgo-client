@@ -1,6 +1,6 @@
 'use strict';
 angular.module('letusgoApp')
-  .controller('EditGoodsCtrl', function ($scope, goodsListService, catagaryService) {
+  .controller('EditGoodsCtrl', function ($scope, goodsListService, categoryService) {
 
     $scope.goods = goodsListService.getStoreGoods();
 
@@ -8,5 +8,5 @@ angular.module('letusgoApp')
       goodsListService.editGoods(goods);
     };
 
-    $scope.catagarys = catagaryService.getCatagarys();
+    $scope.categorys = categoryService.getCategorys();
   });

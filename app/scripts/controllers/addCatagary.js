@@ -1,7 +1,7 @@
 'use strict';
 angular.module('letusgoApp')
-    .controller('AddCatagaryCtrl', function ($scope, catagaryService) {
-        $scope.add = function (catagary) {
-            catagaryService.addCatagary(catagary);
+    .controller('AddCategoryCtrl', function ($scope, categoryService) {
+        $scope.add = function (category) {
+            categoryService.addCategory(category);
         };
     });

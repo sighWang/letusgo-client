@@ -1,7 +1,7 @@
 'use strict';
 
-describe('Controller: EditCatagaryCtrl', function () {
-  var $scope, createController, catagaryService, $controller;
+describe('Controller: EditCategoryCtrl', function () {
+  var $scope, createController, categoryService, $controller;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -10,27 +10,27 @@ describe('Controller: EditCatagaryCtrl', function () {
 
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
-      catagaryService = $injector.get('catagaryService');
+      categoryService = $injector.get('categoryService');
 
       createController = function () {
-        return $controller('EditCatagaryCtrl', {
+        return $controller('EditCategoryCtrl', {
           $scope: $scope
         });
       };
     });
   });
 
-  describe('editCatagary.js', function () {
-    it('catagary should be get', function () {
-      spyOn(catagaryService, 'getStoreCatagary').and.returnValue({id: '4', name: '5'});
+  describe('editCategory.js', function () {
+    it('category should be get', function () {
+      spyOn(categoryService, 'getStoreCategory').and.returnValue({id: '4', name: '5'});
       createController();
-      expect($scope.catagary).toEqual(jasmine.any(Object));
+      expect($scope.category).toEqual(jasmine.any(Object));
     });
-    it('catagaryService.editCatagary should be called', function () {
-      spyOn(catagaryService, 'editCatagary');
+    it('categoryService.editCategory should be called', function () {
+      spyOn(categoryService, 'editCategory');
       createController();
       $scope.edit({id: '4', name: '5'});
-      expect(catagaryService.editCatagary).toHaveBeenCalledWith({id: '4', name: '5'});
+      expect(categoryService.editCategory).toHaveBeenCalledWith({id: '4', name: '5'});
     })
   });
 });

@@ -49,15 +49,15 @@ angular
       })
       .when('/catagaryManage', {
         templateUrl: 'views/catagaryManage.html',
-        controller: 'CatagaryManageCtrl'
+        controller: 'CategoryManageCtrl'
       })
       .when('/editCatagary', {
         templateUrl: 'views/catagaryManage/editCatagary.html',
-        controller: 'EditCatagaryCtrl'
+        controller: 'EditCategoryCtrl'
       })
       .when('/addCatagary', {
         templateUrl: 'views/catagaryManage/addCatagary.html',
-        controller: 'AddCatagaryCtrl'
+        controller: 'AddCategoryCtrl'
       })
 
 //
