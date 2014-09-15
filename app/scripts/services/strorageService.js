@@ -1,7 +1,7 @@
 'use strict';
 angular.module('letusgoApp')
   .service('StorageService', function MyStorageService(localStorageService) {
-    this.initData = function (localStorageService) {
+    this.initData = function () {
       var goodsList = [];
       var cocacola = {id: 'ITEM000000', name: '可口可乐', unit: '瓶', price: 3.00, category: 'drink'};
       var sprite = {id: 'ITEM000001', name: '雪碧', unit: '瓶', price: 3.00, category: 'drink'};

@@ -1,7 +1,7 @@
 'use strict';
 angular.module('letusgoApp')
     .controller('IndexCtrl', function ($scope, cartService, localStorageService,StorageService) {
-    StorageService.initData(localStorageService);
+    StorageService.initData();
 
         $scope.cartNumber = cartService.getCartNumber();
         $scope.listActive = '';

@@ -54,5 +54,5 @@ describe('Controller: CatrCtrl should be test correct ', function () {
 //      expect(cartService.minusGoodsNumberById).toHaveBeenCalledWith('ITEM000002');
 //      expect($scope.$emit).toHaveBeenCalledWith('updateCartNumber');
 //    });
-//  });
+  });
 });

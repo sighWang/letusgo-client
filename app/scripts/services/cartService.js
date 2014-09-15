@@ -62,7 +62,7 @@
       };
 
       this.getTotal = function () {
-        var _customGoodsList = this.customGoodsList;
+        var _customGoodsList = localStorageService.get('customGoodsList');
         var total = 0;
         _.forEach(_customGoodsList, function (customGoods) {
           total += customGoods.number * customGoods.goods.price;
@@ -82,7 +82,7 @@
       };
 
       this.getCategory = function () {
-        var customGoodsList = this.customGoodsList;
+        var customGoodsList = localStorageService.get('customGoodsList');
         var categorys = _.groupBy(customGoodsList, function (customGoods) {
           return customGoods.goods.category;
         });
