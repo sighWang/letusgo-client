@@ -33,7 +33,7 @@ describe('Controller: indexCtrl', function () {
       createController();
       spyOn($scope, '$emit');
       spyOn(cartService, 'addGoodsNumberById');
-      $scope.addOneToCart(new Goods('ITEM000002', '荔枝', '斤', 15.00, 'fruit'));
+      $scope.addOneToCart({id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'});
       expect(cartService.addGoodsNumberById).toHaveBeenCalledWith('ITEM000002');
       expect($scope.$emit).toHaveBeenCalledWith('updateCartNumber');
     });

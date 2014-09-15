@@ -36,7 +36,7 @@ describe('Controller: ListmanageCtrl', function () {
     it('removeItem : goodsList should be minus one', function () {
       createController();
       var length = $scope.goodsList.length;
-      var badminton = new Goods('ITEM000003', '羽毛球', '个', 4.50, 'sport');
+      var badminton = {id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'};
       // $scope.removeItem(badminton);
       expect(length - 1).toEqual(length - 1);
     });
