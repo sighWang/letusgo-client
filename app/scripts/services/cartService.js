@@ -33,7 +33,7 @@
         else {
           var _goodsList = this.goodsList;
           var item = _.find(_goodsList, {'id': id});
-          var customGoods = new CustomGoods(item, 1);
+          var customGoods = {goods:item, number:1};
           customGoodsList.push(customGoods);
           this.editCustomGoodsList(customGoodsList);
           return;
