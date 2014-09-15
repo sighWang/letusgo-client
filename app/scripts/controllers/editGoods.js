@@ -7,6 +7,5 @@ angular.module('letusgoApp')
     $scope.edit = function (goods) {
       goodsListService.editGoods(goods);
     };
-
-    $scope.categorys = categoryService.getCategorys();
+  $scope.categorys = categoryService.getCategorys();
   });
