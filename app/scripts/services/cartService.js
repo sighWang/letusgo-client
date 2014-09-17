@@ -1,7 +1,7 @@
 'use strict';
 (function (_) {
   angular.module('letusgoApp')
-    .service('cartService', function CartService(localStorageService) {
+    .service('cartService', function CartService(localStorageService, $http, $templateCache) {
       this.customGoodsList = localStorageService.get('customGoodsList');
       this.goodsList = localStorageService.get('goodsList');
 
@@ -10,7 +10,17 @@
       };
 
       this.getGoodslist = function () {
-        return localStorageService.get('goodsList');
+        //return localStorageService.get('goodsList');
+        var result = 0;
+        $http({method: 'GET', url: 'localhost:3000/api/items', cache: $templateCache}).
+          success(function (data) {
+            result = data;
+            console.log(data);
+          }).
+          error(function() {
+            console.log('Request failed');
+          });
+          return result;
       };
 
       this.editCustomGoodsList = function (customGoodsList) {
