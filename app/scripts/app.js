@@ -35,15 +35,15 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/api/list/manage', {
+      .when('/api/items/manage', {
         templateUrl: 'views/listManage.html',
         controller: 'ListmanageCtrl'
       })
-      .when('/editGoods', {
+      .when('/api/items/edit', {
         templateUrl: 'views/listManage/editGoods.html',
         controller: 'EditGoodsCtrl'
       })
-      .when('/addGoods', {
+      .when('/api/items/add', {
         templateUrl: 'views/listManage/addGoods.html',
         controller: 'AddGoodsCtrl'
       })

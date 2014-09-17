@@ -4,7 +4,7 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-lg-3">
-          <button type="button" class="btn btn-defualt"><a ng-href="#/addGoods">添加新商品</a></button>
+          <button type="button" class="btn btn-defualt"><a ng-href="#/api/items/add">添加新商品</a></button>
         </div>
         <div class="input-group col-lg-3" >
           <input type="text" class="form-control" placeholder="搜索" ng-model="search">
@@ -36,7 +36,7 @@
             <a ng-click="removeItem(goods)">删除</a>
           </td>
           <td>
-            <a ng-href="#/editGoods" ng-click="showEdit(goods)">修改</a>
+            <a ng-href="#/api/items/edit" ng-click="showEdit(goods)">修改</a>
           </td>
         </tr>
         </tbody>
