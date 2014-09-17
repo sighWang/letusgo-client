@@ -19,7 +19,7 @@ angular
         templateUrl: 'views/welcome.html',
         controller: 'WelcomeCtrl'
       })
-      .when('/list', {
+      .when('/api/list', {
         templateUrl: 'views/list.html',
         controller: 'ListCtrl'
       })
