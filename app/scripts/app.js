@@ -59,16 +59,6 @@ angular
         templateUrl: 'views/categoryManage/addCategory.html',
         controller: 'AddCategoryCtrl'
       })
-
-//
-//      .when('/', {
-//        templateUrl: 'views/main.html',
-//        controller: 'MainCtrl'
-//      })
-//      .when('/about', {
-//        templateUrl: 'views/about.html',
-//        controller: 'AboutCtrl'
-//      })
       .otherwise({
         redirectTo: '/'
       });
