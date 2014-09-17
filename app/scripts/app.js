@@ -23,11 +23,11 @@ angular
         templateUrl: 'views/list.html',
         controller: 'ListCtrl'
       })
-      .when('/cart', {
+      .when('/api/cart', {
         templateUrl: 'views/cart.html',
         controller: 'CartCtrl'
       })
-      .when('/pay', {
+      .when('/api/items/pay', {
         templateUrl: 'views/pay.html',
         controller: 'PayCtrl'
       })
@@ -35,7 +35,7 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/listManage', {
+      .when('/api/list/manage', {
         templateUrl: 'views/listManage.html',
         controller: 'ListmanageCtrl'
       })
