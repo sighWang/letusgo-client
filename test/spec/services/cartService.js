@@ -43,38 +43,24 @@
     });
 
     it('addGoodNumberById: goodsNumber add one', function () {
-//      cartService.addGoodsNumberById('ITEM000003');
-//      var customGoodsList = cartService.getCustomGoodsList();
-//      expect(customGoodsList[0].number).toBe(1);
-//      cartService.addGoodsNumberById('ITEM000003');
-//      customGoodsList = cartService.getCustomGoodsList();
-//      expect(customGoodsList[0].number).toBe(2);
+      cartService.addGoodsNumberById('ITEM000003');
+      var customGoodsList = cartService.getCustomGoodsList();
+      expect(customGoodsList[0].number).toBe(3);
+      cartService.addGoodsNumberById('ITEM000003');
+      customGoodsList = cartService.getCustomGoodsList();
+      expect(customGoodsList[0].number).toBe(4);
     });
     it('minusGoodsNumberById: goodsNumber minus one', function () {
-//      cartService.addGoodsNumberById('ITEM000003');
-//      var customGoodsList = cartService.getCustomGoodsList();
-//      cartService.addGoodsNumberById('ITEM000003');
-//      expect(customGoodsList[0].number).toBe(2);
-//      cartService.minusGoodsNumberById('ITEM000003');
-//      customGoodsList = cartService.getCustomGoodsList();
-//      expect(customGoodsList[0].number).toBe(1);
+      cartService.minusGoodsNumberById('ITEM000003');
+      var customGoodsList = cartService.getCustomGoodsList();
+      expect(customGoodsList[0].number).toBe(1);
     });
     it('getTotal: should be a number', function () {
-//      expect(cartService.getTotal()).toEqual(jasmine.any(Number));
-//      cartService.addGoodsNumberById('ITEM000003');
-//      expect(cartService.getTotal()).toEqual(4.5);
+      expect(cartService.getTotal()).toEqual(jasmine.any(Number));
+      expect(cartService.getTotal()).toEqual(9);
     });
     it('getCartNumber: should be a number', function () {
-      expect(cartService.getCartNumber()).toEqual(jasmine.any(Number));
-      var length = cartService.getCartNumber();
-      cartService.addGoodsNumberById('ITEM000003');
-      expect(cartService.getCartNumber()).toEqual( length + 1);
+      expect(cartService.getCartNumber()).toEqual(2);
     });
-//    it('getCatagary: should be category', function () {
-//      cartService.getCatagary();
-//      spyOn(cartService, 'getCatagary');
-//      cartService.getCatagary();
-//      expect(cartService.getCatagary).toHaveBeenCalled();
-//    });
   });
 })(window._);
