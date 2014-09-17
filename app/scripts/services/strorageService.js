@@ -19,17 +19,6 @@ angular.module('letusgoApp')
           {id: 3, name: 'sport'}
         ]);
       }
-//  if(localStorageService.get('goodsList').length === 0){
-//    localStorageService.set('goodsList', goodsList);
-//  }
-//
-//  if(localStorageService.get('categorys').length === 0){
-//    localStorageService.set('categorys', [
-//      {id: 1, name: 'drink'},
-//      {id: 2, name: 'fruit'},
-//      {id: 3, name: 'sport'}
-//    ]);
-//  }
       var customItemList = [];
       if (localStorageService.get('customGoodsList') === null) {
         localStorageService.set('customGoodsList', customItemList);
