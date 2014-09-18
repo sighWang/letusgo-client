@@ -4,7 +4,6 @@ angular.module('letusgoApp')
   .controller('CategoryManageCtrl', function ($scope, categoryService) {
     updateCategories();
 
-
     $scope.showEdit = function (category) {
       categoryService.storeCategory(category);
     };
