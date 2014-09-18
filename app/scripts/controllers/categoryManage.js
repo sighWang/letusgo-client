@@ -2,14 +2,18 @@
 
 angular.module('letusgoApp')
     .controller('CategoryManageCtrl', function ($scope, categoryService) {
-        $scope.categorys = categoryService.getCategorys();
+    updateCategories();
 
-        $scope.showEdit = function (category) {
+
+    $scope.showEdit = function (category) {
             categoryService.storeCategory(category);
         };
 
         $scope.removeItem = function (category) {
             categoryService.removeCategory(category);
-            $scope.categorys = categoryService.getCategorys();
+          updateCategories();
         };
+    function updateCategories () {
+      $scope.categorys = categoryService.getCategorys();
+    }
     });
