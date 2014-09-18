@@ -2,33 +2,34 @@
 angular.module('letusgoApp')
     .controller('IndexCtrl', function ($scope, cartService, localStorageService,StorageService) {
     StorageService.initData();
-
-        $scope.cartNumber = cartService.getCartNumber();
-        $scope.listActive = '';
-        $scope.cartActive = '';
+    updateCartNumberr();
+    setActive('','');
 
         $scope.$on('updateCartNumber', function () {
-            $scope.cartNumber = cartService.getCartNumber();
+          updateCartNumberr();
         });
 
         $scope.$on('welcomeHighLight', function () {
-            $scope.cartActive = '';
-            $scope.listActive = '';
+          setActive('','');
         });
 
         $scope.$on('cartHighLight', function () {
-            $scope.listActive = '';
-            $scope.cartActive = 'active';
+          setActive('active','');
         });
 
         $scope.$on('listHighLight', function () {
-            $scope.cartActive = '';
-            $scope.listActive = 'active';
+          setActive('','active');
         });
 
         $scope.$on('payHighLight', function () {
-            $scope.cartActive = '';
-            $scope.listActive = '';
+          setActive('','');
         });
+    function setActive(cartActive,listActive){
+      $scope.cartActive = cartActive;
+      $scope.listActive = listActive;
+    }
+    function updateCartNumberr(){
+      $scope.cartNumber = cartService.getCartNumber();
+    }
 
     });
