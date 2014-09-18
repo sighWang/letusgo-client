@@ -24,7 +24,7 @@ angular.module('letusgoApp')
     $scope.$on('payHighLight', function () {
       setActive('', '');
     });
-    
+
     function setActive(cartActive, listActive) {
       $scope.cartActive = cartActive;
       $scope.listActive = listActive;
