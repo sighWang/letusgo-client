@@ -1,10 +1,10 @@
 'use strict';
 angular.module('letusgoApp')
-  .controller('CartCtrl', function ($scope, cartService) {
+  .controller('CartCtrl', function ($scope, cartService, categoryService) {
 
     $scope.$emit('cartHighLight');
     updatePage();
-    $scope.categoryNames = Object.keys(cartService.getCategory());
+    $scope.categoryNames = categoryService.getCategorys();
 
     $scope.addOneToCart = function (item) {
       cartService.addGoodsNumberById(item.goods.id);
