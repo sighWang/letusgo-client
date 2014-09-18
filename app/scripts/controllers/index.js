@@ -1,35 +1,37 @@
 'use strict';
 angular.module('letusgoApp')
-    .controller('IndexCtrl', function ($scope, cartService, localStorageService,StorageService) {
+  .controller('IndexCtrl', function ($scope, cartService, localStorageService, StorageService) {
     StorageService.initData();
     updateCartNumberr();
-    setActive('','');
+    setActive('', '');
 
-        $scope.$on('updateCartNumber', function () {
-          updateCartNumberr();
-        });
+    $scope.$on('updateCartNumber', function () {
+      updateCartNumberr();
+    });
 
-        $scope.$on('welcomeHighLight', function () {
-          setActive('','');
-        });
+    $scope.$on('welcomeHighLight', function () {
+      setActive('', '');
+    });
 
-        $scope.$on('cartHighLight', function () {
-          setActive('active','');
-        });
+    $scope.$on('cartHighLight', function () {
+      setActive('active', '');
+    });
 
-        $scope.$on('listHighLight', function () {
-          setActive('','active');
-        });
+    $scope.$on('listHighLight', function () {
+      setActive('', 'active');
+    });
 
-        $scope.$on('payHighLight', function () {
-          setActive('','');
-        });
-    function setActive(cartActive,listActive){
+    $scope.$on('payHighLight', function () {
+      setActive('', '');
+    });
+    
+    function setActive(cartActive, listActive) {
       $scope.cartActive = cartActive;
       $scope.listActive = listActive;
     }
-    function updateCartNumberr(){
+
+    function updateCartNumberr() {
       $scope.cartNumber = cartService.getCartNumber();
     }
 
-    });
+  });
