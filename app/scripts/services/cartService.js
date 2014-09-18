@@ -10,17 +10,17 @@
       };
 
       this.getGoodslist = function () {
-        //return localStorageService.get('goodsList');
-        var result = 0;
-        $http({method: 'GET', url: 'localhost:3000/api/items', cache: $templateCache}).
-          success(function (data) {
-            result = data;
-            console.log(data);
-          }).
-          error(function() {
-            console.log('Request failed');
-          });
-          return result;
+        return localStorageService.get('goodsList');
+//        var result = [1];
+//        $http({method: 'GET', url: '/api/items', cache: $templateCache}).
+//          success(function (data) {
+//            result = JSON.parse(data);
+//            console.log(result);
+//          }).
+//          error(function() {
+//            console.log('Request failed');
+//          });
+//          return result;
       };
 
       this.editCustomGoodsList = function (customGoodsList) {
