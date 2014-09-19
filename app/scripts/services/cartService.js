@@ -9,15 +9,16 @@
       };
 
       this.getGoodslist = function () {
-//        var result;
-//        $http({method: 'GET', url: '/api/items'}).success(function (data) {
-//            console.log(data);
-//          });
-//          $http({method: 'GET', url: '/api/items'}).error(function() {
-//            console.log('Request failed');
-//          });
-//        return result;
-        return localStorageService.get('goodsList');
+        var result;
+        result = $http({method: 'GET', url: '/api/items'}).success(function (data) {
+
+        });
+        $http({method: 'GET', url: '/api/items'}).error(function () {
+          console.log('Request failed');
+        });
+        console.log(result);
+        return result.data;
+//        return localStorageService.get('goodsList');
       };
 
       this.editCustomGoodsList = function (customGoodsList) {
@@ -28,18 +29,18 @@
         var index = this.getGoodsIndex(id);
         index !== -1 ? this.addNumber(customGoodsList, index) : this.newNumber(customGoodsList, id);
       };
-     this.addNumber = function (customGoodsList,index){
+      this.addNumber = function (customGoodsList, index) {
         customGoodsList[index].number++;
         this.editCustomGoodsList(customGoodsList);
       };
-      this.newNumber = function (customGoodsList, id){
+      this.newNumber = function (customGoodsList, id) {
         var _goodsList = localStorageService.get('goodsList');
         var item = _.find(_goodsList, {'id': id});
-        var customGoods = {goods:item, number:1};
+        var customGoods = {goods: item, number: 1};
         customGoodsList.push(customGoods);
         this.editCustomGoodsList(customGoodsList);
       };
-      this.getGoodsIndex = function(id){
+      this.getGoodsIndex = function (id) {
         var index = -1;
         var customGoodsList = localStorageService.get('customGoodsList');
 
