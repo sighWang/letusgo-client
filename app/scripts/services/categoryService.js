@@ -3,10 +3,10 @@
   angular.module('letusgoApp')
     .service('categoryService', function (localStorageService, $http) {
       this.categorys = localStorageService.get('categorys');
-//      this.getCategorys = function () {
-//        return localStorageService.get('categorys');
-//      };
-      this.getCategorys = function (callback) {
+      this.getCategorys = function () {
+        return localStorageService.get('categorys');
+      };
+      this.getCategories = function (callback) {
         $http({method: 'GET', url: '/api/categories'}).success(function (data) {
           callback(data);
         });
