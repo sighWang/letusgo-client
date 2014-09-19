@@ -20,10 +20,18 @@
       this.editCustomGoodsList = function (customGoodsList) {
         localStorageService.set('customGoodsList', customGoodsList);
       };
+//      this.addGoodsNumberById = function (id) {
+//        var customGoodsList = localStorageService.get('customGoodsList');
+//        var index = this.getGoodsIndex(id);
+//        index !== -1 ? this.addNumber(customGoodsList, index) : this.newNumber(customGoodsList, id);
+//      };
       this.addGoodsNumberById = function (id) {
-        var customGoodsList = localStorageService.get('customGoodsList');
-        var index = this.getGoodsIndex(id);
-        index !== -1 ? this.addNumber(customGoodsList, index) : this.newNumber(customGoodsList, id);
+          $http({method: 'POST',url: '/api/items/add?id='+id}).success(function (data){
+            console.log(data);
+          });
+        $http({method: 'POST',url: '/api/items/add?id='+id}).error(function () {
+          console.log('Request failed');
+        });
       };
       this.addNumber = function (customGoodsList, index) {
         customGoodsList[index].number++;

@@ -7,10 +7,10 @@
         return localStorageService.get('categorys');
       };
       this.getCategories = function (callback) {
-        $http({method: 'GET', url: '/api/categories'}).success(function (categories) {
+        $http({method: 'GET', url: '/api/categories/manage'}).success(function (categories) {
           callback(categories);
         });
-        $http({method: 'GET', url: '/api/categories'}).error(function () {
+        $http({method: 'GET', url: '/api/categories/manage'}).error(function () {
           console.log('Request failed');
         });
         console.log('with http')
@@ -34,11 +34,19 @@
         localStorageService.set('categorys', categorys);
       };
 
-      this.removeCategory = function (category) {
-        var categorys = this.categorys;
-        var index = _.findIndex(categorys, {'id': category.id});
-        categorys.splice(index, 1);
-        this.editCategorys(categorys);
+//      this.removeCategory = function (category) {
+//        var categorys = this.categorys;
+//        var index = _.findIndex(categorys, {'id': category.id});
+//        categorys.splice(index, 1);
+//        this.editCategorys(categorys);
+//      };
+      this.removeCategory = function (categories) {
+        $http.post('/api/categories/delete?data='+JSON.stringify(categories),'data:delete').success(function (data){
+          console.log('enter post\n'+data);
+        });
+        $http.post('/api/categories/delete?data=1','name:sigh').error(function () {
+          console.log('Request failed');
+        });
       };
 
       this.addCategory = function (category) {
