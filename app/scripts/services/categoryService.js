@@ -1,12 +1,19 @@
 'use strict';
 (function (_) {
   angular.module('letusgoApp')
-    .service('categoryService', function (localStorageService) {
+    .service('categoryService', function (localStorageService, $http) {
       this.categorys = localStorageService.get('categorys');
-      this.getCategorys = function () {
-        return localStorageService.get('categorys');
+//      this.getCategorys = function () {
+//        return localStorageService.get('categorys');
+//      };
+      this.getCategorys = function (callback) {
+        $http({method: 'GET', url: '/api/categories'}).success(function (data) {
+          callback(data);
+        });
+        $http({method: 'GET', url: '/api/categories'}).error(function () {
+          console.log('Request failed');
+        });
       };
-
       this.storeCategory = function (category) {
         this.temporaryCategory = category;
       };
