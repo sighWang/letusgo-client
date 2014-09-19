@@ -9,6 +9,7 @@
 //      };
       this.getCustomGoodsList = function (callback) {
         $http({method: 'GET', url: '/api/items/customItems'}).success(function (data) {
+          console.log(data);
           callback(data);
         });
       };
@@ -22,7 +23,12 @@
       };
 
       this.editCustomGoodsList = function (customGoodsList) {
-        localStorageService.set('customGoodsList', customGoodsList);
+        $http({method:'POST',url:'/api/items/customItem/edit',
+          params: {'customItems': JSON.stringify(customGoodsList)}}).
+          success().
+          error(function (){
+            console.log('Request failed');
+          });
       };
 //      this.addGoodsNumberById = function (id) {
 //        var customGoodsList = localStorageService.get('customGoodsList');
@@ -32,7 +38,7 @@
       this.addGoodsNumberById = function (id) {
           this.getCustomGoodsList(function (data){
             var customGoodsList = data;
-            var index = this.getGoodsIndex(customGoodsList,id);
+            var index = getGoodsIndex(customGoodsList,id);
            index !== -1 ? this.addNumber(customGoodsList, index) : this.newNumber(customGoodsList, id);
           });
       };
@@ -49,7 +55,7 @@
           this.editCustomGoodsList(customGoodsList);
         });
       };
-      this.getGoodsIndex = function (customGoodsList, id) {
+      function getGoodsIndex(customGoodsList,id){
         var index = -1;
         for (var i = 0; i < customGoodsList.length; i++) {
           if (_.contains(customGoodsList[i].goods, id)) {
@@ -57,7 +63,7 @@
           }
         }
         return index;
-      };
+      }
       this.minusGoodsNumberById = function (id) {
         var customGoodsList = localStorageService.get('customGoodsList');
         var index = this.getGoodsIndex(id);
