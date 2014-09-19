@@ -8,17 +8,13 @@
         return localStorageService.get('customGoodsList');
       };
 
-      this.getGoodslist = function () {
-        var result;
-        result = $http({method: 'GET', url: '/api/items'}).success(function (data) {
-
+      this.getGoodslist = function (callback) {
+        $http({method: 'GET', url: '/api/items'}).success(function (data) {
+          callback(data);
         });
         $http({method: 'GET', url: '/api/items'}).error(function () {
           console.log('Request failed');
         });
-        console.log(result);
-        return result.data;
-//        return localStorageService.get('goodsList');
       };
 
       this.editCustomGoodsList = function (customGoodsList) {
