@@ -19,7 +19,8 @@
         storeCart[key] = value;
       });
       storageService.initData();
-      localStorageService.set('goodsList', [{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}]);
+      localStorageService.set('goodsList', [{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'},
+        {id: 'ITEM000002', name: '荔枝', unit: '斤', price: 15.00, category: 'fruit'}]);
       localStorageService.set('customGoodsList', [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}]);
     });
 
@@ -29,8 +30,8 @@
       expect(cartService.getCustomGoodsList().length).toEqual(jasmine.any(Number));
     });
 
-    it(' getGoodsList: result length should be 4', function () {
-      expect(cartService.getGoodslist().length).toBe(1);
+    it(' getGoodsList: result length should be 2', function () {
+      expect(cartService.getGoodslist().length).toBe(2);
     });
 
     it('editCustomGoodsList: should be called', function () {
@@ -47,9 +48,9 @@
       cartService.addGoodsNumberById('ITEM000003');
       var customGoodsList = cartService.getCustomGoodsList();
       expect(customGoodsList[0].number).toBe(3);
-      cartService.addGoodsNumberById('ITEM000003');
+      cartService.addGoodsNumberById('ITEM000002');
       customGoodsList = cartService.getCustomGoodsList();
-      expect(customGoodsList[0].number).toBe(4);
+      expect(customGoodsList[1].number).toBe(1);
     });
     it('minusGoodsNumberById: goodsNumber minus one', function () {
       cartService.minusGoodsNumberById('ITEM000003');
