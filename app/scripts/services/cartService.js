@@ -4,10 +4,14 @@
     .service('cartService', function CartService(localStorageService, $http) {
       this.customGoodsList = localStorageService.get('customGoodsList');
       this.goodsList = localStorageService.get('goodsList');
-      this.getCustomGoodsList = function () {
-        return localStorageService.get('customGoodsList');
+//      this.getCustomGoodsList = function () {
+//        return localStorageService.get('customGoodsList');
+//      };
+      this.getCustomGoodsList = function (callback) {
+        $http({method: 'GET', url: '/api/items/customItems'}).success(function (data) {
+          callback(data);
+        });
       };
-
       this.getGoodslist = function (callback) {
         $http({method: 'GET', url: '/api/items'}).success(function (data) {
           callback(data);
@@ -26,28 +30,27 @@
 //        index !== -1 ? this.addNumber(customGoodsList, index) : this.newNumber(customGoodsList, id);
 //      };
       this.addGoodsNumberById = function (id) {
-          $http({method: 'POST',url: '/api/items/add?id='+id}).success(function (data){
-            console.log(data);
+          this.getCustomGoodsList(function (data){
+            var customGoodsList = data;
+            var index = this.getGoodsIndex(customGoodsList,id);
+           index !== -1 ? this.addNumber(customGoodsList, index) : this.newNumber(customGoodsList, id);
           });
-        $http({method: 'POST',url: '/api/items/add?id='+id}).error(function () {
-          console.log('Request failed');
-        });
       };
       this.addNumber = function (customGoodsList, index) {
         customGoodsList[index].number++;
         this.editCustomGoodsList(customGoodsList);
       };
       this.newNumber = function (customGoodsList, id) {
-        var _goodsList = localStorageService.get('goodsList');
-        var item = _.find(_goodsList, {'id': id});
-        var customGoods = {goods: item, number: 1};
-        customGoodsList.push(customGoods);
-        this.editCustomGoodsList(customGoodsList);
+        this.getGoodslist(function (data){
+          var goodsList = data;
+          var item = _.find(goodsList, {'id': id});
+          var customGoods = {goods: item, number: 1};
+          customGoodsList.push(customGoods);
+          this.editCustomGoodsList(customGoodsList);
+        });
       };
-      this.getGoodsIndex = function (id) {
+      this.getGoodsIndex = function (customGoodsList, id) {
         var index = -1;
-        var customGoodsList = localStorageService.get('customGoodsList');
-
         for (var i = 0; i < customGoodsList.length; i++) {
           if (_.contains(customGoodsList[i].goods, id)) {
             index = i;

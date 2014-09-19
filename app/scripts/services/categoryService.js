@@ -41,10 +41,10 @@
 //        this.editCategorys(categorys);
 //      };
       this.removeCategory = function (categories) {
-        $http.post('/api/categories/delete?data='+JSON.stringify(categories),'data:delete').success(function (data){
+        $http.post('/api/categories/delete?data='+JSON.stringify(categories)).success(function (data){
           console.log('enter post\n'+data);
         });
-        $http.post('/api/categories/delete?data=1','name:sigh').error(function () {
+        $http.post('/api/categories/delete','name:sigh').error(function () {
           console.log('Request failed');
         });
       };
