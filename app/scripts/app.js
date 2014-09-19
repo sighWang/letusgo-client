@@ -47,7 +47,7 @@ angular
         templateUrl: 'views/listManage/addGoods.html',
         controller: 'AddGoodsCtrl'
       })
-      .when('/categoryManage', {
+      .when('/api/categories/manage', {
         templateUrl: 'views/categoryManage.html',
         controller: 'CategoryManageCtrl'
       })
