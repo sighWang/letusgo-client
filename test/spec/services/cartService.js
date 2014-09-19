@@ -19,6 +19,7 @@
         storeCart[key] = value;
       });
       storageService.initData();
+      localStorageService.set('goodsList', [{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}]);
       localStorageService.set('customGoodsList', [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}]);
     });
 
@@ -29,7 +30,7 @@
     });
 
     it(' getGoodsList: result length should be 4', function () {
-    //  expect(cartService.getGoodslist().length).toBe(4);
+      expect(cartService.getGoodslist().length).toBe(1);
     });
 
     it('editCustomGoodsList: should be called', function () {
