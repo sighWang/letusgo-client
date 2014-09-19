@@ -56,6 +56,8 @@
       cartService.minusGoodsNumberById('ITEM000003');
       var customGoodsList = cartService.getCustomGoodsList();
       expect(customGoodsList[0].number).toBe(1);
+      cartService.minusGoodsNumberById('ITEM000003');
+      expect(customGoodsList[0]).toBeUndefined();
     });
     it('getTotal: should be a number', function () {
       expect(cartService.getTotal()).toEqual(jasmine.any(Number));
