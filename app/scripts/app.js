@@ -23,7 +23,7 @@ angular
         templateUrl: 'views/list.html',
         controller: 'ListCtrl'
       })
-      .when('/api/cart', {
+      .when('/api/items/cart', {
         templateUrl: 'views/cart.html',
         controller: 'CartCtrl'
       })
