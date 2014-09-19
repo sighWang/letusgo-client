@@ -8,4 +8,7 @@ angular.module('letusgoApp')
       goodsListService.editGoods(goods);
     };
   $scope.categorys = categoryService.getCategorys();
+  $scope.categories = catagoryService.getCategories(function (data){
+      $scope.categories = data;
+  });
   });
