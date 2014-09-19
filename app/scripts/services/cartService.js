@@ -9,7 +9,6 @@
 //      };
       this.getCustomGoodsList = function (callback) {
         $http({method: 'GET', url: '/api/items/customItems'}).success(function (data) {
-          console.log(data);
           callback(data);
         });
       };
@@ -45,7 +44,7 @@
           error(function (){
             console.log('Request failed');
           });
-      };
+      }
 //      this.addGoodsNumberById = function (id) {
 //        var customGoodsList = localStorageService.get('customGoodsList');
 //        var index = this.getGoodsIndex(id);
@@ -114,12 +113,14 @@
         return cartNumber;
       };
 
-      this.getCategory = function () {
-        var customGoodsList = localStorageService.get('customGoodsList');
-        var categories = _.groupBy(customGoodsList, function (customGoods) {
-          return customGoods.goods.category;
+      this.getCategory = function (callback) {
+        this.getCustomGoodsList(function (data){
+          var categories = _.groupBy(data, function (customGoods) {
+            return customGoods.goods.category;
+          });
+          callback(categories);
         });
-        return categories;
+
       };
     });
 })(window._);

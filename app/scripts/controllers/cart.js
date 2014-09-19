@@ -4,7 +4,9 @@ angular.module('letusgoApp')
 
     $scope.$emit('cartHighLight');
     updatePage();
-    $scope.categoryNames = categoryService.getCategorys();
+    $scope.categoryNames = categoryService.getCategories(function (data){
+      $scope.categoryNames = data;
+    });
 
     $scope.addOneToCart = function (item) {
       cartService.addGoodsNumberById(item.goods.id);
@@ -19,7 +21,9 @@ angular.module('letusgoApp')
     };
     function updatePage() {
       $scope.total = cartService.getTotal();
-      $scope.categorys = cartService.getCategory();
+      $scope.categories = cartService.getCategory(function (data){
+        $scope.categories = data;
+      });
     }
 
     function updateCartNumber() {
