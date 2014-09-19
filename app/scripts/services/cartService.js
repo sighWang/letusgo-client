@@ -82,10 +82,10 @@
 
       this.getCategory = function () {
         var customGoodsList = localStorageService.get('customGoodsList');
-        var categorys = _.groupBy(customGoodsList, function (customGoods) {
+        var categories = _.groupBy(customGoodsList, function (customGoods) {
           return customGoods.goods.category;
         });
-        return categorys;
+        return categories;
       };
     });
 })(window._);
