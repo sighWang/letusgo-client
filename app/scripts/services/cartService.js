@@ -93,13 +93,14 @@
         this.editCustomGoodsList(customGoodsList);
       };
 
-      this.getTotal = function () {
-        var _customGoodsList = localStorageService.get('customGoodsList');
-        var total = 0;
-        _.forEach(_customGoodsList, function (customGoods) {
-          total += customGoods.number * customGoods.goods.price;
+      this.getTotal = function (callback) {
+        this.getCustomGoodsList(function (customGoodsList){
+          var total = 0;
+          _.forEach(customGoodsList, function (customGoods) {
+            total += customGoods.number * customGoods.goods.price;
+            callback(total);
+          });
         });
-        return total;
       };
 
       this.getCartNumber = function () {

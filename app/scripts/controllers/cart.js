@@ -20,7 +20,9 @@ angular.module('letusgoApp')
       updatePage();
     };
     function updatePage() {
-      $scope.total = cartService.getTotal();
+      $scope.total = cartService.getTotal(function (data){
+        $scope.total = data;
+      });
       $scope.categories = cartService.getCategory(function (data){
         $scope.categories = data;
       });
