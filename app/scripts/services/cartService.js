@@ -21,9 +21,25 @@
           console.log('Request failed');
         });
       };
+      function getGoodslist(callback) {
+        $http({method: 'GET', url: '/api/items'}).success(function (data) {
+          callback(data);
+        });
+        $http({method: 'GET', url: '/api/items'}).error(function () {
+          console.log('Request failed');
+        });
+      }
 
-      this.editCustomGoodsList = function (customGoodsList) {
-        $http({method:'POST',url:'/api/items/customItem/edit',
+//      this.editCustomGoodsList = function (customGoodsList) {
+//        $http({method:'POST',url:'/api/items/customItem/edit',
+//          params: {'customItems': JSON.stringify(customGoodsList)}}).
+//          success().
+//          error(function (){
+//            console.log('Request failed');
+//          });
+//      };
+      function editCustomGoodsList(customGoodsList) {
+        $http({method:'POST',url:'/api/items/customItems/edit',
           params: {'customItems': JSON.stringify(customGoodsList)}}).
           success().
           error(function (){
@@ -39,22 +55,23 @@
           this.getCustomGoodsList(function (data){
             var customGoodsList = data;
             var index = getGoodsIndex(customGoodsList,id);
-           index !== -1 ? this.addNumber(customGoodsList, index) : this.newNumber(customGoodsList, id);
+           index !== -1 ? addNumber(customGoodsList, index) : newNumber(customGoodsList, id);
           });
       };
-      this.addNumber = function (customGoodsList, index) {
+      function addNumber(customGoodsList, index) {
         customGoodsList[index].number++;
-        this.editCustomGoodsList(customGoodsList);
-      };
-      this.newNumber = function (customGoodsList, id) {
-        this.getGoodslist(function (data){
+        editCustomGoodsList(customGoodsList);
+      }
+      function newNumber(customGoodsList, id) {
+        getGoodslist(function (data){
           var goodsList = data;
           var item = _.find(goodsList, {'id': id});
           var customGoods = {goods: item, number: 1};
           customGoodsList.push(customGoods);
-          this.editCustomGoodsList(customGoodsList);
+          editCustomGoodsList(customGoodsList);
         });
-      };
+      }
+
       function getGoodsIndex(customGoodsList,id){
         var index = -1;
         for (var i = 0; i < customGoodsList.length; i++) {
