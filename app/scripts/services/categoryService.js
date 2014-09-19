@@ -7,12 +7,13 @@
         return localStorageService.get('categorys');
       };
       this.getCategories = function (callback) {
-        $http({method: 'GET', url: '/api/categories'}).success(function (data) {
-          callback(data);
+        $http({method: 'GET', url: '/api/categories'}).success(function (categories) {
+          callback(categories);
         });
         $http({method: 'GET', url: '/api/categories'}).error(function () {
           console.log('Request failed');
         });
+        console.log('with http')
       };
       this.storeCategory = function (category) {
         this.temporaryCategory = category;

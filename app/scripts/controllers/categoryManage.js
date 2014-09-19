@@ -13,6 +13,8 @@ angular.module('letusgoApp')
       updateCategories();
     };
     function updateCategories() {
-      $scope.categorys = categoryService.getCategorys();
+      $scope.categories = categoryService.getCategories(function (data){
+        $scope.categories = data;
+      });
     }
   });
