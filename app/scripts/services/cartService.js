@@ -38,31 +38,33 @@
 //          });
 //      };
       function editCustomGoodsList(customGoodsList) {
-        $http({method:'POST',url:'/api/items/customItems/edit',
+        $http({method: 'POST', url: '/api/items/customItems/edit',
           params: {'customItems': JSON.stringify(customGoodsList)}}).
           success().
-          error(function (){
+          error(function () {
             console.log('Request failed');
           });
       }
+
 //      this.addGoodsNumberById = function (id) {
 //        var customGoodsList = localStorageService.get('customGoodsList');
 //        var index = this.getGoodsIndex(id);
 //        index !== -1 ? this.addNumber(customGoodsList, index) : this.newNumber(customGoodsList, id);
 //      };
       this.addGoodsNumberById = function (id) {
-          this.getCustomGoodsList(function (data){
-            var customGoodsList = data;
-            var index = getGoodsIndex(customGoodsList,id);
-           index !== -1 ? addNumber(customGoodsList, index) : newNumber(customGoodsList, id);
-          });
+        this.getCustomGoodsList(function (data) {
+          var customGoodsList = data;
+          var index = getGoodsIndex(customGoodsList, id);
+          index !== -1 ? addNumber(customGoodsList, index) : newNumber(customGoodsList, id);
+        });
       };
       function addNumber(customGoodsList, index) {
         customGoodsList[index].number++;
         editCustomGoodsList(customGoodsList);
       }
+
       function newNumber(customGoodsList, id) {
-        getGoodslist(function (data){
+        getGoodslist(function (data) {
           var goodsList = data;
           var item = _.find(goodsList, {'id': id});
           var customGoods = {goods: item, number: 1};
@@ -71,7 +73,7 @@
         });
       }
 
-      function getGoodsIndex(customGoodsList,id){
+      function getGoodsIndex(customGoodsList, id) {
         var index = -1;
         for (var i = 0; i < customGoodsList.length; i++) {
           if (_.contains(customGoodsList[i].goods, id)) {
@@ -80,6 +82,7 @@
         }
         return index;
       }
+
       this.minusGoodsNumberById = function (id) {
         var customGoodsList = localStorageService.get('customGoodsList');
         var index = this.getGoodsIndex(id);
@@ -94,7 +97,7 @@
       };
 
       this.getTotal = function (callback) {
-        this.getCustomGoodsList(function (customGoodsList){
+        this.getCustomGoodsList(function (customGoodsList) {
           var total = 0;
           _.forEach(customGoodsList, function (customGoods) {
             total += customGoods.number * customGoods.goods.price;
@@ -115,7 +118,7 @@
       };
 
       this.getCategory = function (callback) {
-        this.getCustomGoodsList(function (data){
+        this.getCustomGoodsList(function (data) {
           var categories = _.groupBy(data, function (customGoods) {
             return customGoods.goods.category;
           });

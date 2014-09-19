@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('letusgoApp')
-    .controller('EditCategoryCtrl', function ($scope, categoryService) {
-        $scope.category = categoryService.getStoreCategory();
+  .controller('EditCategoryCtrl', function ($scope, categoryService) {
+    $scope.category = categoryService.getStoreCategory();
 
-        $scope.edit = function (category) {
-            categoryService.editCategory(category);
-        };
-    });
+    $scope.edit = function (category) {
+      categoryService.editCategory(category);
+    };
+  });
