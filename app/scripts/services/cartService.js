@@ -30,7 +30,7 @@
       };
      this.addNumber = function (customGoodsList,index){
         customGoodsList[index].number++;
-        editCustomGoodsList(customGoodsList);
+        this.editCustomGoodsList(customGoodsList);
       };
       this.newNumber = function (customGoodsList, id){
         var _goodsList = localStorageService.get('goodsList');
