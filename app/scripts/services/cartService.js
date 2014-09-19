@@ -23,26 +23,23 @@
       this.editCustomGoodsList = function (customGoodsList) {
         localStorageService.set('customGoodsList', customGoodsList);
       };
-function editCustomGoodsList (customGoodsList){
-  localStorageService.set('customGoodsList', customGoodsList);
-}
       this.addGoodsNumberById = function (id) {
         var customGoodsList = localStorageService.get('customGoodsList');
-        var index = getGoodsIndex(id);
-        index !== -1 ? addNumber(customGoodsList, index) : newNumber(customGoodsList, id);
+        var index = this.getGoodsIndex(id);
+        index !== -1 ? this.addNumber(customGoodsList, index) : this.newNumber(customGoodsList, id);
       };
-      function addNumber(customGoodsList,index){
+     this.addNumber = function (customGoodsList,index){
         customGoodsList[index].number++;
         editCustomGoodsList(customGoodsList);
-      }
-      function newNumber(customGoodsList, id){
+      };
+      this.newNumber = function (customGoodsList, id){
         var _goodsList = localStorageService.get('goodsList');
         var item = _.find(_goodsList, {'id': id});
         var customGoods = {goods:item, number:1};
         customGoodsList.push(customGoods);
-        editCustomGoodsList(customGoodsList);
-      }
-      function getGoodsIndex(id){
+        this.editCustomGoodsList(customGoodsList);
+      };
+      this.getGoodsIndex = function(id){
         var index = -1;
         var customGoodsList = localStorageService.get('customGoodsList');
 
@@ -52,7 +49,7 @@ function editCustomGoodsList (customGoodsList){
           }
         }
         return index;
-      }
+      };
       this.minusGoodsNumberById = function (id) {
         var index = -1;
         var customGoodsList = localStorageService.get('customGoodsList');
