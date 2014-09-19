@@ -1,10 +1,16 @@
 'use strict';
 (function (_) {
   angular.module('letusgoApp')
-    .service('goodsListService', function GoodsListService(localStorageService) {
+    .service('goodsListService', function GoodsListService(localStorageService, $http) {
       this.goodsList = localStorageService.get('goodsList');
-      this.getGoodslist = function () {
-        return localStorageService.get('goodsList');
+      this.getGoodslist = function (callback) {
+        $http({method: 'GET', url: '/api/items'}).success(function (data) {
+          callback(data);
+        });
+        $http({method: 'GET', url: '/api/items'}).error(function () {
+          console.log('Request failed');
+        });
+        console.log('use http');
       };
 
       this.storeGoods = function (goods) {
