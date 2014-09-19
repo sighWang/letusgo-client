@@ -51,21 +51,14 @@
         return index;
       };
       this.minusGoodsNumberById = function (id) {
-        var index = -1;
         var customGoodsList = localStorageService.get('customGoodsList');
-        for (var i = 0; i < customGoodsList.length; i++) {
-          if (_.contains(customGoodsList[i].goods, id)) {
-            index = i;
-          }
-        }
+        var index = this.getGoodsIndex(id);
         if (index !== -1 && customGoodsList[index].number > 0) {
           customGoodsList[index].number--;
-          if (customGoodsList[index].number === 0) {
-            customGoodsList.splice(index);
-          }
         }
-        else {
-          return -1;
+
+        if (customGoodsList[index].number === 0) {
+          customGoodsList.splice(index);
         }
         this.editCustomGoodsList(customGoodsList);
       };
