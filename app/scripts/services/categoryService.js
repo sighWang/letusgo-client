@@ -40,14 +40,16 @@
 //        categorys.splice(index, 1);
 //        this.editCategorys(categorys);
 //      };
-      this.removeCategory = function (categories) {
-        $http.post('/api/categories/delete?data=' + JSON.stringify(categories)).success(function (data) {
-          console.log('enter post\n' + data);
-        });
-        $http.post('/api/categories/delete', 'name:sigh').error(function () {
-          console.log('Request failed');
+      this.removeCategory = function (category) {
+        this.getCategories(function (){
+          var index = _.findIndex(categorys, {'id': category.id});
+          categorys.splice(index, 1);
+          editCategories(categorys);
         });
       };
+//      function editCategories(categorys){
+//        $http.({method:'POST', url:'api/'})
+//      }
 
       this.addCategory = function (category) {
         this.categorys.push(category);
