@@ -35,10 +35,10 @@
       };
 
       this.removeCategory = function (category) {
-        this.getCategories(function (){
-          var index = _.findIndex(categorys, {'id': category.id});
-          categorys.splice(index, 1);
-          editCategories(categorys);
+        this.getCategories(function (caregories){
+          var index = _.findIndex(caregories, {'id': category.id});
+          caregories.splice(index, 1);
+          editCategories(caregories);
         });
       };
 
@@ -46,5 +46,11 @@
         this.categorys.push(category);
         this.editCategorys(this.categorys);
       };
+      function editCategories(categories){
+        $http.post('api/caregories',categories).success().
+        error(function (){
+            console.log('request fail')
+          });
+      }
     });
 })(window._);
