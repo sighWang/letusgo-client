@@ -34,12 +34,6 @@
         localStorageService.set('categorys', categorys);
       };
 
-//      this.removeCategory = function (category) {
-//        var categorys = this.categorys;
-//        var index = _.findIndex(categorys, {'id': category.id});
-//        categorys.splice(index, 1);
-//        this.editCategorys(categorys);
-//      };
       this.removeCategory = function (category) {
         this.getCategories(function (){
           var index = _.findIndex(categorys, {'id': category.id});
@@ -47,9 +41,6 @@
           editCategories(categorys);
         });
       };
-//      function editCategories(categorys){
-//        $http.({method:'POST', url:'api/'})
-//      }
 
       this.addCategory = function (category) {
         this.categorys.push(category);
