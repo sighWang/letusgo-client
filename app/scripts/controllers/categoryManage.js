@@ -8,8 +8,8 @@ angular.module('letusgoApp')
       categoryService.storeCategory(category);
     };
 
-    $scope.removeItem = function (category) {
-      categoryService.removeCategory(category);
+    $scope.removeItem = function (id) {
+      categoryService.removeCategory(id);
       updateCategories();
     };
     function updateCategories() {

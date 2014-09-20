@@ -34,8 +34,8 @@
         localStorageService.set('categorys', categorys);
       };
 
-      this.removeCategory = function (category) {
-        $http.delete('api/categories?id='+category.id).
+      this.removeCategory = function (id) {
+        $http.delete('api/categories?id=' + id).
           success(function (data){
             console.log(data);
           }).
