@@ -55,7 +55,7 @@ angular
         templateUrl: 'views/categoryManage/editCategory.html',
         controller: 'EditCategoryCtrl'
       })
-      .when('/addCategory', {
+      .when('/addCatagary', {
         templateUrl: 'views/categoryManage/addCategory.html',
         controller: 'AddCategoryCtrl'
       })

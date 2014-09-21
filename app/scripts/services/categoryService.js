@@ -8,6 +8,7 @@
       };
       this.getCategories = function (callback) {
         $http({method: 'GET', url: '/api/categories'}).success(function (categories) {
+          console.log(categories);
           callback(categories);
         });
         $http({method: 'GET', url: '/api/categories'}).error(function () {
@@ -41,8 +42,12 @@
       };
 
       this.addCategory = function (category) {
-        this.categorys.push(category);
-        this.editCategorys(this.categorys);
+        $http.post('api/categories', {data:category}).success(function (data) {
+          console.log(data);
+        })
+          .error(function () {
+            console.log('Request failed')
+          });
       };
       function editCategories(categories){
         $http.post('api/categories', {categories: categories}).
