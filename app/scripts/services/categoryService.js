@@ -13,7 +13,6 @@
         $http({method: 'GET', url: '/api/categories'}).error(function () {
           console.log('Request failed');
         });
-        console.log('with http')
       };
       this.storeCategory = function (category) {
         this.temporaryCategory = category;

@@ -51,7 +51,7 @@ angular
         templateUrl: 'views/categoryManage.html',
         controller: 'CategoryManageCtrl'
       })
-      .when('/editCategory', {
+      .when('/api/categories/edit', {
         templateUrl: 'views/categoryManage/editCategory.html',
         controller: 'EditCategoryCtrl'
       })
