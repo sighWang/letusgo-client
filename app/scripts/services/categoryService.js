@@ -7,9 +7,9 @@
         $http({method: 'GET', url: '/api/categories'}).success(function (categories) {
           callback(categories);
         })
-        .error(function () {
-          console.log('Request failed');
-        });
+          .error(function () {
+            console.log('Request failed');
+          });
       };
 
       this.editCategory = function (category) {
