@@ -35,7 +35,7 @@
       };
 
       this.removeCategory = function (id) {
-        $http.delete('api/categories?id=' + id).
+        $http.delete('api/categories/' + id).
           success(function (data){
             console.log(data);
           }).
