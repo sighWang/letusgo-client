@@ -23,10 +23,10 @@
       };
 
       this.editCategory = function (category) {
-        var categorys = this.categorys;
-        var index = _.findIndex(categorys, {'id': category.id});
-        this.categorys[index] = category;
-        this.editCategorys(categorys);
+        $http.put('/api/categories', {data:category}).success()
+        .error(function () {
+          console.log('Request failed');
+        });
       };
 
       this.editCategorys = function (categorys) {
@@ -34,11 +34,8 @@
       };
 
       this.removeCategory = function (id) {
-        $http.delete('api/categories/' + id).
-          success(function (data){
-            console.log(data);
-          }).
-          error(function () {
+        $http.delete('api/categories/' + id).success()
+          .error(function () {
             console.log('Request failed');
           });
       };
