@@ -5,10 +5,9 @@
 
       this.getCategories = function (callback) {
         $http({method: 'GET', url: '/api/categories'}).success(function (categories) {
-          console.log(categories);
           callback(categories);
-        });
-        $http({method: 'GET', url: '/api/categories'}).error(function () {
+        })
+        .error(function () {
           console.log('Request failed');
         });
       };
@@ -32,9 +31,7 @@
       };
 
       this.addCategory = function (category) {
-        $http.post('api/categories', {data: category}).success(function (data) {
-          console.log(data);
-        })
+        $http.post('api/categories', {data: category}).success()
           .error(function () {
             console.log('Request failed')
           });
