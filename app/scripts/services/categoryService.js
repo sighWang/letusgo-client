@@ -2,10 +2,7 @@
 (function (_) {
   angular.module('letusgoApp')
     .service('categoryService', function (localStorageService, $http) {
-      this.categorys = localStorageService.get('categorys');
-      this.getCategorys = function () {
-        return localStorageService.get('categorys');
-      };
+
       this.getCategories = function (callback) {
         $http({method: 'GET', url: '/api/categories'}).success(function (categories) {
           console.log(categories);
@@ -15,19 +12,12 @@
           console.log('Request failed');
         });
       };
-      this.storeCategory = function (category) {
-        this.temporaryCategory = category;
-      };
-
-      this.getStoreCategory = function () {
-        return this.temporaryCategory;
-      };
 
       this.editCategory = function (category) {
-        $http.put('/api/categories', {data:category}).success()
-        .error(function () {
-          console.log('Request failed');
-        });
+        $http.put('/api/categories', {data: category}).success()
+          .error(function () {
+            console.log('Request failed');
+          });
       };
 
       this.editCategorys = function (categorys) {
@@ -42,21 +32,20 @@
       };
 
       this.addCategory = function (category) {
-        $http.post('api/categories', {data:category}).success(function (data) {
+        $http.post('api/categories', {data: category}).success(function (data) {
           console.log(data);
         })
           .error(function () {
             console.log('Request failed')
           });
       };
-      function editCategories(categories){
-        $http.post('api/categories', {categories: categories}).
-          success(function (data){
-            console.log(data);
-          }).
-          error(function () {
-            console.log('Request failed');
-          });
-      }
+
+      this.storeCategory = function (category) {
+        this.temporaryCategory = category;
+      };
+
+      this.getStoreCategory = function () {
+        return this.temporaryCategory;
+      };
     });
 })(window._);
