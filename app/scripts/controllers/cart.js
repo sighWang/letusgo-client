@@ -4,21 +4,21 @@ angular.module('letusgoApp')
 
     $scope.$emit('cartHighLight');
     updatePage();
-    categoryService.getCategories(function (data) {
-      $scope.categoryNames = data;
-    });
+//    categoryService.getCategories(function (data) {
+//      $scope.categoryNames = data;
+//    });
 
-    $scope.addOneToCart = function (item) {
-      cartService.addGoodsNumberById(item.goods.id);
-      updateCartNumber();
-      updatePage();
-    };
-
-    $scope.minusOneToCart = function (item) {
-      cartService.minusGoodsNumberById(item.goods.id);
-      updateCartNumber();
-      updatePage();
-    };
+//    $scope.addOneToCart = function (item) {
+//      cartService.addGoodsNumberById(item.goods.id);
+//      updateCartNumber();
+//      updatePage();
+//    };
+//
+//    $scope.minusOneToCart = function (item) {
+//      cartService.minusGoodsNumberById(item.goods.id);
+//      updateCartNumber();
+//      updatePage();
+//    };
     function updatePage() {
       cartService.getTotal(function (data) {
         $scope.total = data;
