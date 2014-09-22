@@ -40,11 +40,11 @@ angular
         controller: 'ListmanageCtrl'
       })
       .when('/api/items/edit', {
-        templateUrl: 'views/listManage/editGoods.html',
+        templateUrl: 'views/itemManage/editGoods.html',
         controller: 'EditGoodsCtrl'
       })
       .when('/api/items/add', {
-        templateUrl: 'views/listManage/addGoods.html',
+        templateUrl: 'views/itemManage/addGoods.html',
         controller: 'AddGoodsCtrl'
       })
       .when('/api/categories', {
