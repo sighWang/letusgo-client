@@ -2,12 +2,11 @@
 (function (_) {
   angular.module('letusgoApp')
     .service('goodsListService', function GoodsListService(localStorageService, $http) {
-      this.goodsList = localStorageService.get('goodsList');
       this.getGoodslist = function (callback) {
         $http({method: 'GET', url: '/api/items'}).success(function (data) {
           callback(data);
-        });
-        $http({method: 'GET', url: '/api/items'}).error(function () {
+        })
+        .error(function () {
           console.log('Request failed');
         });
       };
@@ -37,10 +36,10 @@
         this.editGoodsList(goodsList);
       };
       this.removeGoods = function (goods) {
-        var goodsList = localStorageService.get('goodsList');
-        var index = _.findIndex(goodsList, {'id': goods.id});
-        goodsList.splice(index, 1);
-        this.editGoodsList(goodsList);
+        $http.delete('api/items/' + goods.id).success()
+          .error(function () {
+            console.log('Request failed');
+          });
       };
       function findItemIndex(goods) {
         var goodsList = localStorageService.get('goodsList');
