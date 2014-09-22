@@ -10,7 +10,6 @@
         $http({method: 'GET', url: '/api/items'}).error(function () {
           console.log('Request failed');
         });
-        console.log('use http');
       };
 
       this.storeGoods = function (goods) {
