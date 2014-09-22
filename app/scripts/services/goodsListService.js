@@ -6,9 +6,9 @@
         $http({method: 'GET', url: '/api/items'}).success(function (data) {
           callback(data);
         })
-        .error(function () {
-          console.log('Request failed');
-        });
+          .error(function () {
+            console.log('Request failed');
+          });
       };
 
       this.storeGoods = function (goods) {

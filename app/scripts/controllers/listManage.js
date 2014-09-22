@@ -11,7 +11,7 @@ angular.module('letusgoApp')
       goodsListService.removeGoods(goods);
       updateItems();
     };
-    function updateItems(){
+    function updateItems() {
       goodsListService.getGoodslist(function (date) {
         $scope.goodsList = date;
       });
