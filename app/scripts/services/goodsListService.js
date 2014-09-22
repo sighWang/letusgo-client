@@ -44,10 +44,5 @@
             console.log('Request failed');
           });
       };
-      function findItemIndex(goods) {
-        var goodsList = localStorageService.get('goodsList');
-        var index = _.findIndex(goodsList, {'id': goods.id});
-        return index;
-      }
     });
 })(window._);
