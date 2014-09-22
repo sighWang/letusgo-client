@@ -36,7 +36,7 @@ angular
         controller: 'AboutCtrl'
       })
       .when('/api/items/manage', {
-        templateUrl: 'views/listManage.html',
+        templateUrl: 'views/itemManage.html',
         controller: 'ListmanageCtrl'
       })
       .when('/api/items/edit', {
