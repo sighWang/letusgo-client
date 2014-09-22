@@ -6,5 +6,7 @@ angular.module('letusgoApp')
       $scope.$emit('refreshGoodsList');
       $scope.$broadcast('refreshGoodsList');
     };
-    $scope.categorys = categoryService.getCategorys();
+    categoryService.getCategories(function (data) {
+      $scope.categories = data;
+    });
   });

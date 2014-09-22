@@ -18,10 +18,10 @@
   <div class="input-group col-md-7 col-md-offset-2">
     <span class="input-group-addon">category</span>
     <select ng-model="goods.category" class="form-control">
-      <option ng-repeat="category in categorys">{{category.name}}</option>
+      <option ng-repeat="category in categories">{{category.name}}</option>
     </select>
   </div>
   <div class="input-group col-md-7 col-md-offset-2  text-right">
-    <a ng-href="#/listManage" ng-click="add(goods)">提交修改</a>
+    <a ng-href="#/api/items/manage" ng-click="add(goods)">提交</a>
   </div>
 </div>

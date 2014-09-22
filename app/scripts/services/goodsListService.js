@@ -31,16 +31,12 @@
             console.log('Request failed');
           });
       };
-      this.editGoodsList = function (goodsList) {
-        localStorageService.set('goodsList', goodsList);
-      };
-
-
 
       this.addGoods = function (goods) {
-        var goodsList = localStorageService.get('goodsList');
-        goodsList.push(goods);
-        this.editGoodsList(goodsList);
+        $http.post('/api/items', {data: goods}).success()
+          .error(function () {
+            console.log('Request failed');
+          });
       };
       this.removeGoods = function (goods) {
         $http.delete('api/items/' + goods.id).success()
