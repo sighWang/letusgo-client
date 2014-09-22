@@ -19,16 +19,23 @@
         return this.temporaryId;
       };
 
+      this.getGoods = function (id, callback) {
+        $http.get('/api/items/' + id).success(function (data) {
+          callback(data);
+        });
+      };
+
+      this.editGoods = function (goods) {
+        $http.put('/api/items', {data: goods}).success()
+          .error(function () {
+            console.log('Request failed');
+          });
+      };
       this.editGoodsList = function (goodsList) {
         localStorageService.set('goodsList', goodsList);
       };
 
-      this.editGoods = function (goods) {
-        var goodsList = localStorageService.get('goodsList');
-        var index = _.findIndex(goodsList, {'id': goods.id});
-        this.goodsList[index] = goods;
-        this.editGoodsList(goodsList);
-      };
+
 
       this.addGoods = function (goods) {
         var goodsList = localStorageService.get('goodsList');
