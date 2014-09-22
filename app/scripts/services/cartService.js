@@ -34,7 +34,7 @@
       this.getCategory = function (callback) {
         $http.get('/api/customItems').success(function (data) {
           console.log(data);
-          callback(data);
+          callback(data.categories, data.total);
         });
       };
     });
