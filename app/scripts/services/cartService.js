@@ -25,39 +25,12 @@
           console.log('Request failed');
         });
       }
-
-      function editCustomGoodsList(customGoodsList) {
-        $http({method: 'POST', url: '/api/items/customItems/edit',
-          params: {'customItems': JSON.stringify(customGoodsList)}}).
-          success().
-          error(function () {
+      this.updateGoodsNumberById = function (id, data) {
+        $http.post('/api/customItems/'+id,{data:data}).success()
+          .error(function () {
             console.log('Request failed');
           });
-      }
-
-
-      this.addGoodsNumberById = function (id) {
-        this.getCustomGoodsList(function (data) {
-          var customGoodsList = data;
-          var index = getGoodsIndex(customGoodsList, id);
-          index !== -1 ? addNumber(customGoodsList, index) : newNumber(customGoodsList, id);
-        });
       };
-      function addNumber(customGoodsList, index) {
-        customGoodsList[index].number++;
-        editCustomGoodsList(customGoodsList);
-      }
-
-      function newNumber(customGoodsList, id) {
-        getGoodslist(function (data) {
-          var goodsList = data;
-          var item = _.find(goodsList, {'id': id});
-          var customGoods = {goods: item, number: 1};
-          customGoodsList.push(customGoods);
-          editCustomGoodsList(customGoodsList);
-        });
-      }
-
       function getGoodsIndex(customGoodsList, id) {
         var index = -1;
         for (var i = 0; i < customGoodsList.length; i++) {

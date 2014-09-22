@@ -7,7 +7,7 @@ angular.module('letusgoApp')
     });
 
     $scope.addOneToCart = function (goods) {
-      cartService.addGoodsNumberById(goods.id);
+      cartService.updateGoodsNumberById(goods.id, 1);
       $scope.$emit('updateCartNumber');
     };
   });
