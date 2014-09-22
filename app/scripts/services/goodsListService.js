@@ -11,12 +11,12 @@
           });
       };
 
-      this.storeGoods = function (goods) {
-        this.temporaryGoods = goods;
+      this.storeGoodsId = function (id) {
+        this.temporaryId = id;
       };
 
-      this.getStoreGoods = function () {
-        return this.temporaryGoods;
+      this.getStoreGoodsId = function () {
+        return this.temporaryId;
       };
 
       this.editGoodsList = function (goodsList) {

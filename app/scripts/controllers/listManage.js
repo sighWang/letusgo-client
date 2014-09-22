@@ -4,7 +4,7 @@ angular.module('letusgoApp')
 
     updateItems();
     $scope.showEdit = function (goods) {
-      goodsListService.storeGoods(goods);
+      goodsListService.storeGoodsId(goods.id);
     };
 
     $scope.removeItem = function (goods) {
