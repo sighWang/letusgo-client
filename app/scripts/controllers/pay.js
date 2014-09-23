@@ -2,11 +2,8 @@
 angular.module('letusgoApp')
   .controller('PayCtrl', function ($scope, cartService) {
     $scope.$emit('payHighLight');
-
-    $scope.customGoodsList = cartService.getCustomGoodsList(function (data) {
+    cartService.getCategory(function (data, total) {
       $scope.customGoodsList = data;
-    });
-    $scope.total = cartService.getTotal(function (data) {
-      $scope.total = data;
+      $scope.total = total;
     });
   });

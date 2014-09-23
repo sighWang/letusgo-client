@@ -19,7 +19,10 @@ angular.module('letusgoApp')
 
     function updatePage() {
       cartService.getCategory(function (data, total) {
-        $scope.categories = data;
+        var categories = _.groupBy(data, function (custom) {
+          return custom.goods.category;
+        });
+        $scope.categories = categories;
         $scope.total = total;
       });
     }
