@@ -11,7 +11,7 @@
         });
       };
       this.updateGoodsNumberById = function (id, data) {
-        $http.post('/api/customItems/' + id, {data: data}).success(function(data) {
+        $http.post('/api/customItems/' + id, {data: data}).success(function (data) {
         })
           .error(function () {
             console.log('Request failed');
