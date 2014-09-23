@@ -1,18 +1,18 @@
 'use strict';
 angular.module('letusgoApp')
-  .controller('ListmanageCtrl', function ($scope, goodsListService) {
+  .controller('ListmanageCtrl', function ($scope, GoodsListService) {
 
     updateItems();
     $scope.showEdit = function (goods) {
-      goodsListService.storeGoodsId(goods.id);
+      GoodsListService.storeGoodsId(goods.id);
     };
 
     $scope.removeItem = function (goods) {
-      goodsListService.removeGoods(goods);
+      GoodsListService.removeGoods(goods);
       updateItems();
     };
     function updateItems() {
-      goodsListService.getGoodslist(function (date) {
+      GoodsListService.getGoodslist(function (date) {
         $scope.goodsList = date;
       });
     }

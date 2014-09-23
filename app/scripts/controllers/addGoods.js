@@ -1,12 +1,12 @@
 'use strict';
 angular.module('letusgoApp')
-  .controller('AddGoodsCtrl', function ($scope, goodsListService, categoryService) {
+  .controller('AddGoodsCtrl', function ($scope, GoodsListService, CategoryService) {
     $scope.add = function (goods) {
-      goodsListService.addGoods(goods);
+      GoodsListService.addGoods(goods);
       $scope.$emit('refreshGoodsList');
       $scope.$broadcast('refreshGoodsList');
     };
-    categoryService.getCategories(function (data) {
+    CategoryService.getCategories(function (data) {
       $scope.categories = data;
     });
   });

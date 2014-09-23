@@ -1,6 +1,6 @@
 'use strict';
 angular.module('letusgoApp')
-  .controller('IndexCtrl', function ($scope, cartService, StorageService) {
+  .controller('IndexCtrl', function ($scope, CartService) {
     updateCartNumberr();
     setActive('', '');
 
@@ -30,7 +30,7 @@ angular.module('letusgoApp')
     }
 
     function updateCartNumberr() {
-      cartService.getCartNumber(function (data) {
+      CartService.getCartNumber(function (data) {
         $scope.cartNumber = data;
       });
     }

@@ -1,8 +1,8 @@
 'use strict';
 angular.module('letusgoApp')
-  .controller('PayCtrl', function ($scope, cartService) {
+  .controller('PayCtrl', function ($scope, CartService) {
     $scope.$emit('payHighLight');
-    cartService.getCategory(function (data, total) {
+    CartService.getCategory(function (data, total) {
       $scope.customGoodsList = data;
       $scope.total = total;
     });

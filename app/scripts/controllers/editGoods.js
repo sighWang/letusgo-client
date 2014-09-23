@@ -1,15 +1,15 @@
 'use strict';
 angular.module('letusgoApp')
-  .controller('EditGoodsCtrl', function ($scope, goodsListService, categoryService) {
-    var id= goodsListService.getStoreGoodsId();
-    goodsListService.getGoods(id, function (data){
+  .controller('EditGoodsCtrl', function ($scope, GoodsListService, CategoryService) {
+    var id= GoodsListService.getStoreGoodsId();
+    GoodsListService.getGoods(id, function (data){
         $scope.goods = data;
     });
 
     $scope.edit = function (goods) {
-      goodsListService.editGoods(goods);
+      GoodsListService.editGoods(goods);
     };
-  categoryService.getCategories(function (data) {
+  CategoryService.getCategories(function (data) {
          $scope.categories = data;
       });
   });

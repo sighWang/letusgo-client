@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('letusgoApp')
-  .controller('CategoryManageCtrl', function ($scope, categoryService) {
+  .controller('CategoryManageCtrl', function ($scope, CategoryService) {
     updateCategories();
 
     $scope.showEdit = function (category) {
-      categoryService.storeCategory(category);
+      CategoryService.storeCategory(category);
     };
 
     $scope.removeItem = function (id) {
-      categoryService.removeCategory(id);
+      CategoryService.removeCategory(id);
       updateCategories();
     };
     function updateCategories() {
-      categoryService.getCategories(function (data) {
+      CategoryService.getCategories(function (data) {
         $scope.categories = data;
       });
     }

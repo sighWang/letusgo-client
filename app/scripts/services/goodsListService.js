@@ -1,7 +1,7 @@
 'use strict';
 (function (_) {
   angular.module('letusgoApp')
-    .service('goodsListService', function GoodsListService($http) {
+    .service('GoodsListService', function GoodsListService($http) {
       this.getGoodslist = function (callback) {
         $http({method: 'GET', url: '/api/items'}).success(function (data) {
           callback(data);
