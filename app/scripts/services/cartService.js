@@ -11,7 +11,7 @@
         });
       };
       this.updateGoodsNumberById = function (id, data) {
-        $http.post('/api/customItems/'+id,{data:data}).success()
+        $http.post('/api/customItems/'+id, {data:data}).success()
           .error(function () {
             console.log('Request failed');
           });
@@ -33,7 +33,6 @@
 
       this.getCategory = function (callback) {
         $http.get('/api/customItems').success(function (data) {
-          console.log(data);
           callback(data.categories, data.total);
         });
       };

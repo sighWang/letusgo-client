@@ -9,10 +9,10 @@
             <div class="col-md-2">{{item.goods.name}}</div>
             <div class="col-md-2">{{item.goods.price + '元/' + item.goods.unit}}</div>
             <div class="col-md-4 btn-group">
-              <button type="button" class="btn btn-default" ng-click="minusOneToCart(item)">-</button>
+              <button type="button" class="btn btn-default" ng-click="minusOneToCart(item.goods.id)">-</button>
               <button type="button" class="btn btn-default" disabled="disabled">{{item.number + item.goods.unit}}
               </button>
-              <button type="button" class="btn btn-default" ng-click="addOneToCart(item)">+</button>
+              <button type="button" class="btn btn-default" ng-click="addOneToCart(item.goods.id)">+</button>
             </div>
             <div class="col-md-2">共{{item.subtotal}}元</div>
             <div class="col-md-1"></div>

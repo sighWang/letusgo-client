@@ -5,14 +5,15 @@ angular.module('letusgoApp')
     $scope.$emit('cartHighLight');
     updatePage();
 
-    $scope.addOneToCart = function (goods) {
-      cartService.updateGoodsNumberById(goods.id, 1);
+    $scope.addOneToCart = function (id) {
+      cartService.updateGoodsNumberById(id, 1);
       updateCartNumber();
       updatePage();
     };
 
-    $scope.minusOneToCart = function (goods) {
-      cartService.updateGoodsNumberById(goods.id, -1);
+    $scope.minusOneToCart = function (id) {
+      console.log(id);
+      cartService.updateGoodsNumberById(id, -1);
       updateCartNumber();
       updatePage();
     };
