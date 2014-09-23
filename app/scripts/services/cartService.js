@@ -11,15 +11,12 @@
         });
       };
       this.updateGoodsNumberById = function (id, data) {
-        $http.post('/api/customItems/' + id, {data: data}).success()
+        $http.post('/api/customItems/' + id, {data: data}).success(function(data) {
+        })
           .error(function () {
             console.log('Request failed');
           });
       };
-      this.getTotal = function (callback) {
-        callback(11);
-      };
-
       this.getCartNumber = function () {
         var customGoodsList = localStorageService.get('customGoodsList');
         var cartNumber = 0;

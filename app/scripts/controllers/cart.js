@@ -12,7 +12,6 @@ angular.module('letusgoApp')
     };
 
     $scope.minusOneToCart = function (id) {
-      console.log(id);
       cartService.updateGoodsNumberById(id, -1);
       updateCartNumber();
       updatePage();
