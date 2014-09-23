@@ -12,6 +12,7 @@ angular.module('letusgoApp')
       CategoryService.removeCategory(id);
       updateCategories();
     };
+
     function updateCategories() {
       CategoryService.getCategories(function (data) {
         $scope.categories = data;

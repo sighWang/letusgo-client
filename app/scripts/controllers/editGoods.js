@@ -9,6 +9,7 @@ angular.module('letusgoApp')
     $scope.edit = function (goods) {
       GoodsListService.editGoods(goods);
     };
+
   CategoryService.getCategories(function (data) {
          $scope.categories = data;
       });

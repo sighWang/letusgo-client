@@ -30,5 +30,6 @@
           callback(data.categories, data.total);
         });
       };
+
     });
 })(window._);
