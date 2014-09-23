@@ -1,7 +1,7 @@
 'use strict';
 (function (_) {
   angular.module('letusgoApp')
-    .service('categoryService', function (localStorageService, $http) {
+    .service('categoryService', function ($http) {
 
       this.getCategories = function (callback) {
         $http({method: 'GET', url: '/api/categories'}).success(function (categories) {
@@ -17,10 +17,6 @@
           .error(function () {
             console.log('Request failed');
           });
-      };
-
-      this.editCategorys = function (categorys) {
-        localStorageService.set('categorys', categorys);
       };
 
       this.removeCategory = function (id) {
