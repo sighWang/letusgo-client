@@ -31,7 +31,9 @@ angular.module('letusgoApp')
     }
 
     function updateCartNumberr() {
-      $scope.cartNumber = cartService.getCartNumber();
+       cartService.getCartNumber(function (data) {
+         $scope.cartNumber = data;
+       });
     }
 
   });

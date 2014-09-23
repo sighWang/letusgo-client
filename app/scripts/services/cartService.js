@@ -17,15 +17,10 @@
             console.log('Request failed');
           });
       };
-      this.getCartNumber = function () {
-        var customGoodsList = localStorageService.get('customGoodsList');
-        var cartNumber = 0;
-        if (customGoodsList) {
-          for (var i = 0; i < customGoodsList.length; i++) {
-            cartNumber += customGoodsList[i].number;
-          }
-        }
-        return cartNumber;
+      this.getCartNumber = function (callback) {
+        $http.get('/api/customItems/cartNumber').success(function (data) {
+          callback(data);
+        });
       };
 
       this.getCategory = function (callback) {
