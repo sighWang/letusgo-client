@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Controller: addCategoryCtrl', function () {
-  var $scope, createController, categoryService, $controller;
+  var $scope, createController, CategoryService, $controller;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -10,7 +10,7 @@ describe('Controller: addCategoryCtrl', function () {
 
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
-      categoryService = $injector.get('categoryService');
+      CategoryService = $injector.get('CategoryService');
 
       createController = function () {
         return $controller('AddCategoryCtrl', {
@@ -22,10 +22,10 @@ describe('Controller: addCategoryCtrl', function () {
 
   describe('addcategory.js', function () {
     it('category shoude be add', function () {
-      spyOn(categoryService, 'addCategory');
+      spyOn(CategoryService, 'addCategory');
       createController();
       $scope.add({id: '5', name: '5'});
-      expect(categoryService.addCategory).toHaveBeenCalledWith({id: '5', name: '5'});
+      expect(CategoryService.addCategory).toHaveBeenCalledWith({id: '5', name: '5'});
     });
   });
 });
