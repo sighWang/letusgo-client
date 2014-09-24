@@ -13,7 +13,7 @@
       };
 
       this.editCategory = function (category) {
-        $http.put('/api/categories', {data: category}).success()
+        $http.put('/api/categories/' + category).success()
           .error(function () {
             console.log('Request failed');
           });
