@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Controller: CatrCtrl should be test correct ', function () {
-  var $scope, createController, cartService, $controller, localStorageService,  storageService;
+  var $scope, createController, cartService, $controller;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -11,25 +11,22 @@ describe('Controller: CatrCtrl should be test correct ', function () {
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
       cartService = $injector.get('cartService');
-      localStorageService = $injector.get('localStorageService');
-      storageService = $injector.get('StorageService');
       createController = function () {
         return $controller('CartCtrl', {
           $scope: $scope
         });
       };
     });
-    storageService.initData();
-    spyOn(localStorageService,'get').and.callFake(function () {
-      return [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}];
-    });
+//    spyOn(localStorageService,'get').and.callFake(function () {
+//      return [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}];
+//    });
   });
 
   describe('cart.js should be test correct', function () {
     it('cart should be highLight', function () {
       spyOn($scope, '$emit');
       createController();
-      localStorageService.set('customGoodsList',{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2});
+//      localStorageService.set('customGoodsList',{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2});
       expect($scope.$emit).toHaveBeenCalledWith('cartHighLight');
     });
 
