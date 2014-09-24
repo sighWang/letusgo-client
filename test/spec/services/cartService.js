@@ -1,32 +1,18 @@
 'use strict';
 (function (_) {
   describe('Service: test cartService should be correct', function () {
-    var cartService, storeCart = {}, localStorageService, $scope , storageService;
+    var cartService, $scope;
 
     beforeEach(function () {
       module('letusgoApp');
       inject(function ($injector) {
         $scope = $injector.get('$rootScope').$new();
-        localStorageService = $injector.get('localStorageService');
-        storageService = $injector.get('StorageService');
         cartService = $injector.get('cartService');
       });
-      spyOn(localStorageService, 'get').and.callFake(function (key) {
-        return storeCart[key];
-      });
 
-      spyOn(localStorageService, 'set').and.callFake(function (key, value) {
-        storeCart[key] = value;
-      });
-      storageService.initData();
-      localStorageService.set('goodsList', [{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'},
-        {id: 'ITEM000002', name: '荔枝', unit: '斤', price: 15.00, category: 'fruit'}]);
-      localStorageService.set('customGoodsList', [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}]);
     });
 
     it('getCustomGoodsList: result length should be a number', function () {
-      localStorageService.set('customGoodsList',
-        [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}]);
       expect(cartService.getCustomGoodsList().length).toEqual(jasmine.any(Number));
     });
 
