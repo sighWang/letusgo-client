@@ -25,8 +25,8 @@
         });
       };
 
-      this.editGoods = function (goods) {
-        $http.put('/api/items', {data: goods}).success()
+      this.editGoods = function (item) {
+        $http.put('/api/items' + item).success()
           .error(function () {
             console.log('Request failed');
           });
