@@ -2,15 +2,7 @@
 (function (_) {
   angular.module('letusgoApp')
     .service('CartService', function CartService($http) {
-      this.getGoodslist = function (callback) {
-        $http({method: 'GET', url: '/api/items'}).success(function (data) {
-          callback(data);
-        });
-        $http({method: 'GET', url: '/api/items'}).error(function () {
-          console.log('Request failed');
-        });
-      };
-
+      
       this.updateGoodsNumberById = function (id, data) {
         $http.post('/api/customItems/' + id, {data: data}).success(function (data) {
         })
