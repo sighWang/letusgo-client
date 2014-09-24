@@ -20,7 +20,7 @@ describe('Controller: addGoodsCtrl', function () {
     });
   });
 
-  describe('addGoods.js', function () {
+  describe('test addGoods.js', function () {
     it('category shoude be add', function () {
       spyOn(GoodsListService, 'addGoods');
       createController();
