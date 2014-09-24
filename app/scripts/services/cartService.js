@@ -2,7 +2,7 @@
 (function (_) {
   angular.module('letusgoApp')
     .service('CartService', function CartService($http) {
-      
+
       this.updateGoodsNumberById = function (id, data) {
         $http.post('/api/customItems/' + id, {data: data}).success(function (data) {
         })
