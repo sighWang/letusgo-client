@@ -20,7 +20,7 @@ describe('Controller: addCategoryCtrl', function () {
     });
   });
 
-  describe('addcategory.js', function () {
+  describe('test addcategory.js', function () {
     it('category shoude be add', function () {
       spyOn(CategoryService, 'addCategory');
       createController();
