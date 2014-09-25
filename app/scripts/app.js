@@ -28,10 +28,6 @@ angular
         templateUrl: 'views/pay.html',
         controller: 'PayCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
       .when('/api/items/manage', {
         templateUrl: 'views/itemManage.html',
         controller: 'ListmanageCtrl'
