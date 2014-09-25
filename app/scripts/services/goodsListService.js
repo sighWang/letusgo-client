@@ -26,7 +26,7 @@
       };
 
       this.editGoods = function (item) {
-        $http.put('/api/items' + item).success()
+        $http.put('/api/items/' + JSON.stringify(item)).success()
           .error(function () {
             console.log('Request failed');
           });
