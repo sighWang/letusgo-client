@@ -1,13 +1,25 @@
 'use strict';
 angular.module('letusgoApp')
-  .controller('EditGoodsCtrl', function ($scope, GoodsListService, CategoryService) {
+  .controller('EditGoodsCtrl', function ($scope, GoodsListService, CategoryService, $location) {
     var id= GoodsListService.getStoreGoodsId();
     GoodsListService.getGoods(id, function (data){
         $scope.goods = data;
     });
 
     $scope.edit = function (goods) {
-      GoodsListService.editGoods(goods);
+    if(goods.id === '' ||
+            goods.name === '' ||
+            goods.unit === '' ||
+            goods.price === '' ||
+            goods.category === ''){
+            $('#myModal').modal({});
+          }
+          else{
+            GoodsListService.editGoods(goods);
+            $scope.$emit('refreshGoodsList');
+            $scope.$broadcast('refreshGoodsList');
+            $location.path('/api/items/manage');
+          }
     };
 
   CategoryService.getCategories(function (data) {
