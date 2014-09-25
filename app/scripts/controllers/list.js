@@ -1,6 +1,6 @@
 'use strict';
 angular.module('letusgoApp')
-  .controller('ListCtrl', function ($scope, GoodsListService) {
+  .controller('ListCtrl', function ($scope, GoodsListService, CartService) {
     $scope.$emit('listHighLight');
     $scope.goodsList = GoodsListService.getGoodslist(function (data) {
       $scope.goodsList = data;
