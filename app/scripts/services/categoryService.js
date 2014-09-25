@@ -6,31 +6,19 @@
       this.getCategories = function (callback) {
         $http({method: 'GET', url: '/api/categories'}).success(function (categories) {
           callback(categories);
-        })
-          .error(function () {
-            console.log('Request failed');
-          });
+        });
       };
 
       this.editCategory = function (category) {
-        $http.put('/api/categories/' + JSON.stringify(category)).success()
-          .error(function () {
-            console.log('Request failed');
-          });
+        $http.put('/api/categories/' + JSON.stringify(category)).success();
       };
 
       this.removeCategory = function (id) {
-        $http.delete('api/categories/' + id).success()
-          .error(function () {
-            console.log('Request failed');
-          });
+        $http.delete('api/categories/' + id).success();
       };
 
       this.addCategory = function (category) {
-        $http.post('api/categories', {data: category}).success()
-          .error(function () {
-            console.log('Request failed')
-          });
+        $http.post('api/categories', {data: category}).success();
       };
 
       this.storeCategory = function (category) {

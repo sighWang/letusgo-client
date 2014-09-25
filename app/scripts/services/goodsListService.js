@@ -5,10 +5,7 @@
       this.getGoodslist = function (callback) {
         $http({method: 'GET', url: '/api/items'}).success(function (data) {
           callback(data);
-        })
-          .error(function () {
-            console.log('Request failed');
-          });
+        });
       };
 
       this.storeGoodsId = function (id) {
@@ -26,24 +23,15 @@
       };
 
       this.editGoods = function (item) {
-        $http.put('/api/items/' + JSON.stringify(item)).success()
-          .error(function () {
-            console.log('Request failed');
-          });
+        $http.put('/api/items/' + JSON.stringify(item)).success();
       };
 
       this.addGoods = function (goods) {
-        $http.post('/api/items', {data: goods}).success()
-          .error(function () {
-            console.log('Request failed');
-          });
+        $http.post('/api/items', {data: goods}).success();
       };
 
       this.removeGoods = function (goods) {
-        $http.delete('api/items/' + goods.id).success()
-          .error(function () {
-            console.log('Request failed');
-          });
+        $http.delete('api/items/' + goods.id).success();
       };
     });
 })(window._);
