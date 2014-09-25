@@ -35,9 +35,17 @@
     it('test getCategory :category should be an array', function () {
 
     });
-
+//
+//    this.getCartNumber = function (callback) {
+//      $http.get('/api/customItems/cartNumber').success(function (data) {
+//        callback(data);
+//      });
+//    };
     it('getCartNumber: should be a number', function () {
-//      expect(cartService.getCartNumber()).toEqual(2);
+//      cartService.getCartNumber(function (data){
+//        var type = typeof data;
+//        expect(type).toEqual(3);
+//      });
     });
   });
 })(window._);
