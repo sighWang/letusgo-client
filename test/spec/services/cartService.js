@@ -1,13 +1,14 @@
 'use strict';
 (function (_) {
   describe('Service: test cartService should be correct', function () {
-    var cartService, $scope;
+    var cartService, $scope, $httpBackend;
 
     beforeEach(function () {
       module('letusgoApp');
       inject(function ($injector) {
         $scope = $injector.get('$rootScope').$new();
         cartService = $injector.get('CartService');
+        $httpBackend = $injector.get('$httpBackend');
       });
 
     });
@@ -39,13 +40,23 @@
 //    this.getCartNumber = function (callback) {
 //      $http.get('/api/customItems/cartNumber').success(function (data) {
 //        callback(data);
+//    var controller = createController();
+//    $httpBackend.flush();
+//    $rootScope.saveMessage('message content');
+//    expect($rootScope.status).toBe('Saving...');
+//    $httpBackend.flush();
+//    expect($rootScope.status).toBe('');
 //      });
 //    };
-    it('getCartNumber: should be a number', function () {
-//      cartService.getCartNumber(function (data){
-//        var type = typeof data;
-//        expect(type).toEqual(3);
-//      });
+    it('getCartNumber: should get cartNumber from serve', function () {
+//      $httpBackend.flush();
+//      var cartNumber;
+//      function callback(data){
+//        cartNumber = data;
+//      }
+//      cartService.getCartNumber(callback);
+//      expect(cartNumber).toBe('jdfkaj');
+//      $httpBackend.flush();
     });
   });
 })(window._);
