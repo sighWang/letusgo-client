@@ -6,32 +6,28 @@ describe('Service: goodsListService', function () {
     module('letusgoApp');
     inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();
-      goodsListService = $injector.get('goodsListService');
+      goodsListService = $injector.get('GoodsListService');
+      $httpBackend = $injector.get('$httpBackend');
     });
   });
 
-  it('goodsList: should be defined', function () {
-    expect(goodsListService.goodsList.length).toEqual(jasmine.any(Number));
-    expect(goodsListService.goodsList.length).toEqual(4);
+  afterEach(function() {
+    $httpBackend.verifyNoOutstandingExpectation();
   });
 
-  it('getGoodsList: localStorageService.get should be called', function () {
-
+  it('goodsList: should be get goodsList', function () {
+    $httpBackend.expectGET('/api/items').respond([0,1]);
+    goodsListService.getGoodslist(function (data){
+      expect(data.length).toBe(2);
+    });
+    $httpBackend.flush();
   });
 
-  it('editGoodsList: localStorageService.set should be called', function () {
-
-  });
-
-  it('editGoods: goodsListService.editGoodsList hava been called', function () {
-
-  });
-
-  it('addGoods: goodsList length should be add one', function () {
-
-  });
-
-  it('remove: goodsList length should be minus one', function () {
-
+  it('getGoods: should return a goods', function () {
+    $httpBackend.expectGET('/api/items/item').respond([0,1]);
+    goodsListService.getGoods('item', function (data){
+    expect(data).toEqual([0,1]);
+    });
+    $httpBackend.flush();
   });
 });
