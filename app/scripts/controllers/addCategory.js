@@ -1,15 +1,12 @@
 'use strict';
 angular.module('letusgoApp')
   .controller('AddCategoryCtrl', function ($scope, CategoryService, $location) {
-    function showModal() {
-      $('#myModal').modal({});
-    }
     $scope.add = function (category) {
       if(category === undefined){
-        showModal();
+        $('#myModal').modal({});
       }
       else if(category.id === undefined || category.name === undefined){
-        showModal();
+        $('#myModal').modal({});
       }
       else{
         CategoryService.addCategory(category);
