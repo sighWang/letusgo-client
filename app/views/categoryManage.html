@@ -27,7 +27,7 @@
           <td>{{category.id}}</td>
           <td>{{category.name}}</td>
           <td>
-            <a ng-click="removeItem(category.id)">删除</a>
+            <a ng-click="removeItem(category)">删除</a>
           </td>
           <td>
             <a ng-href="#/api/categories/edit" ng-click="showEdit(category)">修改</a>
@@ -35,6 +35,22 @@
         </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">警告</h4>
+      </div>
+      <div class="modal-body">
+        删除失败，该分类下存在商品
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
