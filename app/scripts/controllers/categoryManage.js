@@ -8,9 +8,15 @@ angular.module('letusgoApp')
       CategoryService.storeCategory(category);
     };
 
-    $scope.removeItem = function (id) {
-      CategoryService.removeCategory(id);
-      updateCategories();
+    $scope.removeItem = function (category) {
+      CategoryService.removeCategory(category, function (removed) {
+        if(removed){
+          updateCategories();
+        }
+        else{
+          $('#myModal').modal({});
+        }
+      });
     };
 
     function updateCategories() {
