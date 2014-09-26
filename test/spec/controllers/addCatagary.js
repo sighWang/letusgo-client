@@ -21,7 +21,7 @@ describe('Controller: addCategoryCtrl', function () {
   });
 
   describe('test addcategory.js', function () {
-    it('category shoude be add', function () {
+    it('category should be add correct', function () {
       spyOn(CategoryService, 'addCategory');
       createController();
       $scope.add({id: '5', name: '5'});
