@@ -1,6 +1,6 @@
 'use strict';
 describe('Controller: ListmanageCtrl', function () {
-  var $scope,storeCart = {}, createController, goodsListService, $controller, storageService, localStorageService;
+  var $scope, createController, goodsListService, $controller;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -9,9 +9,7 @@ describe('Controller: ListmanageCtrl', function () {
 
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
-      goodsListService = $injector.get('goodsListService');
-      storageService = $injector.get('StorageService');
-      localStorageService = $injector.get('localStorageService');
+      goodsListService = $injector.get('GoodsListService');
 
       createController = function () {
         return $controller('ListmanageCtrl', {
@@ -19,14 +17,6 @@ describe('Controller: ListmanageCtrl', function () {
         });
       };
     });
-    spyOn(localStorageService, 'get').and.callFake(function (key) {
-      return storeCart[key];
-    });
-
-    spyOn(localStorageService, 'set').and.callFake(function (key, value) {
-      storeCart[key] = value;
-    });
-    storageService.initData();
   });
 
   describe('goodsListManageCtrl add remove edit get', function () {
@@ -34,12 +24,6 @@ describe('Controller: ListmanageCtrl', function () {
       spyOn(goodsListService,'getGoodslist');
       createController();
       expect(goodsListService.getGoodslist).toHaveBeenCalled();
-    });
-
-    it('showEdit : goodsListService.storeGoods should be called', function () {
-      createController();
-      spyOn(goodsListService, 'storeGoods');
-      $scope.showEdit({id: '2'});
     });
 
     it('removeItem : goodsList should be minus one', function () {
