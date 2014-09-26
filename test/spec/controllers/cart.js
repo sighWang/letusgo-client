@@ -17,40 +17,32 @@ describe('Controller: CatrCtrl should be test correct ', function () {
         });
       };
     });
-//    spyOn(localStorageService,'get').and.callFake(function () {
-//      return [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}];
-//    });
   });
 
   describe('cart.js should be test correct', function () {
     it('cart should be highLight', function () {
       spyOn($scope, '$emit');
       createController();
-//      localStorageService.set('customGoodsList',{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2});
       expect($scope.$emit).toHaveBeenCalledWith('cartHighLight');
     });
 
-//    it('$scope.categorys: should be a number', function () {
-//      createController();
-//      expect($scope.categories).toEqual(jasmine.any(Object));
-//    });
-    it('addOneToCart:should call cartService.addGoodsNumberById', function () {
-      createController();
+    it('addOneToCart:should call cartService.updateGoodsNumberById', function () {
       spyOn(cartService, 'updateGoodsNumberById');
-      spyOn(cartService, 'getCartNumber');
-      spyOn(cartService, 'getCategory');
       spyOn($scope, '$emit');
-      var good = {id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'};
-      $scope.addOneToCart({goods: good, number: 2});
+      createController();
+      var id = 'ITEM000002';
+      $scope.addOneToCart(id);
       expect($scope.$emit).toHaveBeenCalledWith('updateCartNumber');
+      expect(cartService.updateGoodsNumberById).toHaveBeenCalledWith(id, 1)
     });
     it('minusGoodsNumberById:should call cartService.minusGoodsNumberById', function () {
       createController();
       spyOn(cartService, 'updateGoodsNumberById');
       spyOn($scope, '$emit');
-      var good = {id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'};
-      $scope.minusOneToCart({goods: good, number: 2});
+      var id = 'ITEM000002';
+      $scope.minusOneToCart(id);
       expect($scope.$emit).toHaveBeenCalledWith('updateCartNumber');
+      expect(cartService.updateGoodsNumberById).toHaveBeenCalledWith(id, -1)
     });
   });
 });
