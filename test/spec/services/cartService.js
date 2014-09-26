@@ -13,6 +13,11 @@
 
     });
 
+    afterEach(function() {
+      $httpBackend.verifyNoOutstandingExpectation();
+      $httpBackend.verifyNoOutstandingRequest();
+    });
+
     it('test updateGoodsNumberById: goodsNumber add one', function () {
 //      cartService.addGoodsNumberById('ITEM000003');
 //      var customGoodsList = cartService.getCustomGoodsList();
@@ -22,41 +27,38 @@
 //      expect(customGoodsList[1].number).toBe(1);
     });
     it('test updateGoodsNumberById: goodsNumber minus one', function () {
-//      cartService.minusGoodsNumberById('ITEM000003');
-//      var customGoodsList = cartService.getCustomGoodsList();
-//      expect(customGoodsList[0].number).toBe(1);
-//      cartService.minusGoodsNumberById('ITEM000003');
-//      expect(customGoodsList[0]).toBeUndefined();
+//      $httpBackend.expectPOST('/api/customItems/');
+
     });
 
     it('test getCategory: total should be a number', function () {
-//      expect(cartService.getTotal()).toEqual(jasmine.any(Number));
-//      expect(cartService.getTotal()).toEqual(9);
-    });
-    it('test getCategory :category should be an array', function () {
-
-    });
-//
-//    this.getCartNumber = function (callback) {
-//      $http.get('/api/customItems/cartNumber').success(function (data) {
-//        callback(data);
-//    var controller = createController();
-//    $httpBackend.flush();
-//    $rootScope.saveMessage('message content');
-//    expect($rootScope.status).toBe('Saving...');
-//    $httpBackend.flush();
-//    expect($rootScope.status).toBe('');
+//      var resData = 11;
+//      $httpBackend.expectGET('/api/customItems').respond(200, resData);
+//      cartService.getCategory(function (data){
+//        expect(data).toBe(11);
 //      });
-//    };
+//      $httpBackend.flush();
+    });
+    it('test getCategory : should get custonItems from serve', function () {
+//      var result = 0;
+//      var callback = function (data) {
+//        result = data;
+//        expect(data).toBe(customItems[0].categories);
+//      };
+//      var customItems = [{categories:{goods:'goods', number: 'number', subtotal: 'subtatal'}, total: 'total'}];
+//      $httpBackend.expectGET('/api/customItems').respond(200, customItems);
+//      cartService.getCategory(callback);
+////      expect(result).toBe(customItems[0].categories);
+//      $httpBackend.flush();
+    });
+
     it('getCartNumber: should get cartNumber from serve', function () {
-//      $httpBackend.flush();
-//      var cartNumber;
-//      function callback(data){
-//        cartNumber = data;
-//      }
-//      cartService.getCartNumber(callback);
-//      expect(cartNumber).toBe('jdfkaj');
-//      $httpBackend.flush();
+      var resData = 11;
+      $httpBackend.expectGET('/api/customItems/cartNumber').respond(200, resData);
+      cartService.getCartNumber(function (data){
+        expect(data).toBe(11);
+      });
+      $httpBackend.flush();
     });
   });
 })(window._);
