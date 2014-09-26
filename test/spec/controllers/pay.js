@@ -10,7 +10,7 @@ describe('Controller:PayCtrl', function () {
 
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
-      cartService = $injector.get('cartService');
+      cartService = $injector.get('CartService');
       createController = function () {
         return $controller('PayCtrl', {
           $scope: $scope
@@ -27,14 +27,15 @@ describe('Controller:PayCtrl', function () {
       expect($scope.$emit).toHaveBeenCalledWith('payHighLight');
     });
 
-    it('$scope.goodsList: should be a number', function () {
+    it('$scope.goodsList: should get catgory and total', function () {
+      spyOn(cartService, 'getCategory').and.callFake(function (callback) {
+        callback([1, 2], 22);
+      });
       createController();
-      expect($scope.customGoodsList.length).toEqual(jasmine.any(Number));
-    });
-
-    it('$scope.goodsList: should be a number', function () {
-      createController();
-      expect($scope.total).toEqual(jasmine.any(Number));
+      cartService.getCategory(function (data, total) {
+        expect($scope.customGoodsList).toEqual(data);
+        expect($scope.total).toEqual(total);
+      });
     });
   });
 });
