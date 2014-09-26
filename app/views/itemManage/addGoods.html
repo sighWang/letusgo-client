@@ -1,22 +1,22 @@
 <div class="container">
   <div class="input-group  col-md-7 col-md-offset-2">
-    <span class="input-group-addon">id</span>
+    <span class="input-group-addon">商品ID</span>
     <input type="text" class="form-control" ng-model="goods.id">
   </div>
   <div class="input-group col-md-7 col-md-offset-2">
-    <span class="input-group-addon">name</span>
+    <span class="input-group-addon">商品名称</span>
     <input type="text" class="form-control" ng-model="goods.name">
   </div>
   <div class="input-group col-md-7 col-md-offset-2">
-    <span class="input-group-addon">unit</span>
+    <span class="input-group-addon">商品单位</span>
     <input type="text" class="form-control" ng-model="goods.unit">
   </div>
   <div class="input-group col-md-7 col-md-offset-2">
-    <span class="input-group-addon">price</span>
+    <span class="input-group-addon">商品单价</span>
     <input type="text" class="form-control" ng-model="goods.price">
   </div>
   <div class="input-group col-md-7 col-md-offset-2">
-    <span class="input-group-addon">category</span>
+    <span class="input-group-addon">商品分类</span>
     <select ng-model="goods.category" class="form-control">
       <option ng-repeat="category in categories">{{category.name}}</option>
     </select>
