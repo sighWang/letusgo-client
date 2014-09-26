@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Controller:PayCtrl', function () {
-  var $scope, createController, cartService, $controller, localStorageService;
+  var $scope, createController, cartService, $controller;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -11,15 +11,11 @@ describe('Controller:PayCtrl', function () {
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
       cartService = $injector.get('cartService');
-      localStorageService = $injector.get('localStorageService');
       createController = function () {
         return $controller('PayCtrl', {
           $scope: $scope
         });
       };
-    });
-    spyOn(localStorageService,'get').and.callFake(function () {
-      return [{goods:{id: 'ITEM000003', name: '羽毛球', unit: '个', price: 4.50, category: 'sport'}, number:2}];
     });
   });
 
