@@ -11,7 +11,6 @@ describe('Controller: EditCategoryCtrl', function () {
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
       CategoryService = $injector.get('CategoryService');
-
       createController = function () {
         return $controller('EditCategoryCtrl', {
           $scope: $scope
@@ -31,6 +30,13 @@ describe('Controller: EditCategoryCtrl', function () {
       createController();
       $scope.edit({id: '4', name: '5'});
       expect(CategoryService.editCategory).toHaveBeenCalledWith({id: '4', name: '5'});
+    });
+
+    it('CategoryService.editCategory should be called should be filed', function () {
+      spyOn(CategoryService, 'editCategory');
+      createController();
+//      $scope.edit({id: '4', name: ''});
+//      expect(CategoryService.editCategory).not.toHaveBeenCalledWith({id: '4', name: '5'});
     })
   });
 });
