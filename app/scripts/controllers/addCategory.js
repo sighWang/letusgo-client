@@ -2,10 +2,10 @@
 angular.module('letusgoApp')
   .controller('AddCategoryCtrl', function ($scope, CategoryService, $location) {
     $scope.add = function (category) {
-      if(category === undefined){
+      if(category){
         $('#myModal').modal({});
       }
-      else if(category.id === undefined || category.name === undefined){
+      else if(category.id || category.name ){
         $('#myModal').modal({});
       }
       else{
