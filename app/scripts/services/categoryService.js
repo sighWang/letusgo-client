@@ -2,7 +2,7 @@
 (function (_) {
   angular.module('letusgoApp')
     .service('CategoryService', function ($http) {
-      
+
       function ableRemove(category, callback) {
         $http({method: 'GET', url: '/api/items'}).success(function (data) {
           var result = false;
