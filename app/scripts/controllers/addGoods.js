@@ -2,14 +2,10 @@
 angular.module('letusgoApp')
   .controller('AddGoodsCtrl', function ($scope, GoodsListService, CategoryService, $location) {
     $scope.add = function (goods) {
-      if(goods === undefined){
+      if(goods){
         $('#myModal').modal({});
       }
-      else if(goods.id === undefined ||
-        goods.name === undefined ||
-        goods.unit === undefined ||
-        goods.price === undefined ||
-        goods.category === undefined){
+      else if(goods.id || goods.name || goods.unit ||  goods.price || goods.category){
         $('#myModal').modal({});
       }
       else{
@@ -18,7 +14,6 @@ angular.module('letusgoApp')
         $scope.$broadcast('refreshGoodsList');
         $location.path('/api/items/manage');
       }
-
     };
 
     CategoryService.getCategories(function (data) {
