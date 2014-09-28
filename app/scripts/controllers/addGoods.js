@@ -2,10 +2,10 @@
 angular.module('letusgoApp')
   .controller('AddGoodsCtrl', function ($scope, GoodsListService, CategoryService, $location) {
     $scope.add = function (goods) {
-      if (goods) {
+      if (!goods) {
         $('#myModal').modal({});
       }
-      else if (goods.id || goods.name || goods.unit || goods.price || goods.category) {
+      else if (!goods.id || !goods.name || !goods.unit || !goods.price || !goods.category) {
         $('#myModal').modal({});
       }
       else {
