@@ -29,7 +29,7 @@ describe('Controller: categoryManagageCtrl', function () {
     });
 
     it('remove Item', function () {
-      spyOn(categoryService,'removeCategory').and.callFake(function(category,callback){
+      spyOn(categoryService, 'removeCategory').and.callFake(function (category, callback) {
         callback(true);
       });
 

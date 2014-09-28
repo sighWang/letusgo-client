@@ -36,12 +36,14 @@ describe('Controller: CatrCtrl should be test correct ', function () {
       expect(cartService.updateGoodsNumberById).toHaveBeenCalledWith(id, 1)
     });
     it('minusGoodsNumberById:should call cartService.minusGoodsNumberById', function () {
-      var items = [{goods: {name: '可口可乐', unit: '瓶', price: 3.00, category: '饮料'}}];
+      var items = [
+        {goods: {name: '可口可乐', unit: '瓶', price: 3.00, category: '饮料'}}
+      ];
       var categories = _.groupBy(items, function (custom) {
         return custom.goods.category;
       });
       var total = 12;
-      spyOn(cartService,'getCategory').and.callFake(function(callback){
+      spyOn(cartService, 'getCategory').and.callFake(function (callback) {
         callback(items, total);
       });
 
@@ -52,7 +54,7 @@ describe('Controller: CatrCtrl should be test correct ', function () {
       $scope.minusOneToCart(id);
       expect($scope.$emit).toHaveBeenCalledWith('updateCartNumber');
       expect(cartService.updateGoodsNumberById).toHaveBeenCalledWith(id, -1);
-      cartService.getCategory(function(items, total){
+      cartService.getCategory(function (items, total) {
         expect($scope.categories).toEqual(categories);
         expect($scope.total).toEqual(total);
       });

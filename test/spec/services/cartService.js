@@ -13,7 +13,7 @@
 
     });
 
-    afterEach(function() {
+    afterEach(function () {
       $httpBackend.verifyNoOutstandingExpectation();
       $httpBackend.verifyNoOutstandingRequest();
     });
@@ -55,7 +55,7 @@
     it('getCartNumber: should get cartNumber from serve', function () {
       var resData = 11;
       $httpBackend.expectGET('/api/customItems/cartNumber').respond(200, resData);
-      cartService.getCartNumber(function (data){
+      cartService.getCartNumber(function (data) {
         expect(data).toBe(11);
       });
       $httpBackend.flush();

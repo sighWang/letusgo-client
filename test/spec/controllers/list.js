@@ -23,13 +23,15 @@ describe('Controller: indexCtrl', function () {
   describe('list.js', function () {
 
     it('$scope.goodsList: should be a number', function () {
-      var items = [{id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'}];
-      spyOn(GoodsListService,'getGoodslist').and.callFake(function(callback){
+      var items = [
+        {id: 'ITEM000002', name: '荔枝', unit: '斤', price: 15.00, category: 'fruit'}
+      ];
+      spyOn(GoodsListService, 'getGoodslist').and.callFake(function (callback) {
         callback(items);
       });
       spyOn($scope, '$emit');
       createController();
-      GoodsListService.getGoodslist(function(data){
+      GoodsListService.getGoodslist(function (data) {
         expect($scope.goodsList).toEqual(data);
       });
       expect($scope.$emit).toHaveBeenCalledWith('listHighLight');
@@ -39,7 +41,7 @@ describe('Controller: indexCtrl', function () {
       createController();
       spyOn($scope, '$emit');
       spyOn(cartService, 'updateGoodsNumberById');
-      $scope.addOneToCart({id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'});
+      $scope.addOneToCart({id: 'ITEM000002', name: '荔枝', unit: '斤', price: 15.00, category: 'fruit'});
       expect($scope.$emit).toHaveBeenCalledWith('updateCartNumber');
       expect(cartService.updateGoodsNumberById).toHaveBeenCalledWith('ITEM000002', 1);
     });

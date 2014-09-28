@@ -24,17 +24,17 @@ describe('Controller: addGoodsCtrl', function () {
     it('category should be add', function () {
       spyOn(GoodsListService, 'addGoods');
       createController();
-      $scope.add({id: '5', name: '5',unit: '5', price: '5', category: '5' });
-      expect(GoodsListService.addGoods).toHaveBeenCalledWith({id: '5', name: '5',unit: '5', price: '5', category: '5' });
+      $scope.add({id: '5', name: '5', unit: '5', price: '5', category: '5' });
+      expect(GoodsListService.addGoods).toHaveBeenCalledWith({id: '5', name: '5', unit: '5', price: '5', category: '5' });
     });
 
     it('categories should be defined', function () {
-      var categories = ["饮料", "水果","运动器材"];
-      spyOn(CategoryService,'getCategories').and.callFake(function(callback){
+      var categories = ["饮料", "水果", "运动器材"];
+      spyOn(CategoryService, 'getCategories').and.callFake(function (callback) {
         callback(categories);
       });
       createController();
-      CategoryService.getCategories(function(data){
+      CategoryService.getCategories(function (data) {
         expect($scope.categories).toEqual(data);
       });
     });

@@ -21,17 +21,17 @@ describe('Controller: ListmanageCtrl', function () {
 
   describe('ListmanageCtrl.js', function () {
     it('test showEdit:GoodsListService.storeGoodsId should be called', function () {
-      var goods = {id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'};
-      spyOn(goodsListService,'storeGoodsId');
+      var goods = {id: 'ITEM000002', name: '荔枝', unit: '斤', price: 15.00, category: 'fruit'};
+      spyOn(goodsListService, 'storeGoodsId');
       createController();
       $scope.showEdit(goods);
       expect(goodsListService.storeGoodsId).toHaveBeenCalledWith(goods.id);
     });
 
     it('removeItem : goodsList should be minus one', function () {
-      spyOn(goodsListService,'removeGoods');
+      spyOn(goodsListService, 'removeGoods');
       createController();
-      var badminton = {id:'ITEM000002', name:'荔枝', unit:'斤', price:15.00, category:'fruit'};
+      var badminton = {id: 'ITEM000002', name: '荔枝', unit: '斤', price: 15.00, category: 'fruit'};
       $scope.removeItem(badminton);
       expect(goodsListService.removeGoods).toHaveBeenCalledWith(badminton);
     });
