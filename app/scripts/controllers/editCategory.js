@@ -5,12 +5,12 @@ angular.module('letusgoApp')
     $scope.category = CategoryService.getStoreCategory();
 
     $scope.edit = function (category) {
-      if (category.name === '') {
-        $('#myModal').modal({});
-      }
-      else {
+      if (category.name) {
         CategoryService.editCategory(category);
         $location.path('/api/categories');
+      }
+      else {
+        $('#myModal').modal({});
       }
     };
   });
