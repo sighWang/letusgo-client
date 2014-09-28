@@ -2,12 +2,12 @@
 (function (_) {
   angular.module('letusgoApp')
     .service('CategoryService', function ($http) {
-      function ableRemove(category, callback){
+      function ableRemove(category, callback) {
         $http({method: 'GET', url: '/api/items'}).success(function (data) {
           var result = false;
           _.forEach(data, function (item) {
             var contain = _.contains(item, category.name);
-            if(contain){
+            if (contain) {
               result = contain;
             }
           });
@@ -26,8 +26,8 @@
       };
 
       this.removeCategory = function (category, callback) {
-        ableRemove(category, function (result){
-          if(!result){
+        ableRemove(category, function (result) {
+          if (!result) {
             $http.delete('api/categories/' + category.id).success();
           }
           callback(!result);

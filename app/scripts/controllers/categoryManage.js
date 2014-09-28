@@ -10,10 +10,10 @@ angular.module('letusgoApp')
 
     $scope.removeItem = function (category) {
       CategoryService.removeCategory(category, function (removed) {
-        if(removed){
+        if (removed) {
           updateCategories();
         }
-        else{
+        else {
           $('#myModal').modal({});
         }
       });
