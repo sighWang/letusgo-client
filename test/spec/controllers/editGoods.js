@@ -24,8 +24,8 @@ describe('Controller: EditGoodsCtrl', function () {
     it('categoryService.editCategory should be called', function () {
       spyOn(GoodsListService, 'editGoods');
       createController();
-      $scope.edit({id: '4', name: '5'});
-      expect(GoodsListService.editGoods).toHaveBeenCalledWith({id: '4', name: '5'});
+      $scope.edit({id: 'ITEM000000', name: '可口可乐', unit: '瓶', price: 3.00, category: '饮料'});
+      expect(GoodsListService.editGoods).toHaveBeenCalledWith({id: 'ITEM000000', name: '可口可乐', unit: '瓶', price: 3.00, category: '饮料'});
     });
 
     it('$scope.goods is get', function () {
