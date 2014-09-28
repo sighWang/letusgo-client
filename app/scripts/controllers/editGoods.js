@@ -7,11 +7,7 @@ angular.module('letusgoApp')
     });
 
     $scope.edit = function (goods) {
-    if(goods.id === '' ||
-            goods.name === '' ||
-            goods.unit === '' ||
-            goods.price === '' ||
-            goods.category === ''){
+    if(goods.id || goods.name || goods.unit || goods.price || goods.category){
             $('#myModal').modal({});
           }
           else{
