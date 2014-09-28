@@ -32,9 +32,21 @@ describe('Controller: categoryManagageCtrl', function () {
       spyOn(categoryService, 'removeCategory').and.callFake(function (category, callback) {
         callback(true);
       });
+      spyOn(categoryService, 'getCategories');
 
       createController();
       $scope.removeItem({id: '3', name: '4'});
+      expect(categoryService.removeCategory).toHaveBeenCalled();
+      expect(categoryService.getCategories).toHaveBeenCalled();
+    });
+
+    it('shoulf faild remove Item', function () {
+      spyOn(categoryService, 'removeCategory').and.callFake(function (category, callback) {
+        callback(true);
+      });
+
+      createController();
+      $scope.removeItem({id: '', name: ''});
       expect(categoryService.removeCategory).toHaveBeenCalled();
     });
   });

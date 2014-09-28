@@ -27,5 +27,10 @@ describe('Controller: addCategoryCtrl', function () {
       $scope.add({id: '5', name: '5'});
       expect(CategoryService.addCategory).toHaveBeenCalledWith({id: '5', name: '5'});
     });
+
+//    it('wrong category should not be add', function () {
+//      createController();
+//      $scope.add({id: '5'});
+//    })
   });
 });

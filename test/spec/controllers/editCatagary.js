@@ -32,10 +32,10 @@ describe('Controller: EditCategoryCtrl', function () {
       expect(CategoryService.editCategory).toHaveBeenCalledWith({id: '4', name: '5'});
     });
 
-    it('CategoryService.editCategory should be called should be filed', function () {
+    it('CategoryService.editCategory  should be filed', function () {
       spyOn(CategoryService, 'editCategory');
       createController();
-//      $scope.edit({id: '4', name: ''});
+//      $scope.edit({id: '4', name: false});
 //      expect(CategoryService.editCategory).not.toHaveBeenCalledWith({id: '4', name: '5'});
     })
   });
