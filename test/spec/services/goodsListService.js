@@ -1,6 +1,6 @@
 'use strict';
 describe('Service: goodsListService', function () {
-  var goodsListService, $scope, $httpBackend, goodsList;
+  var goodsListService, $scope, $httpBackend, goodsList, $http;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -8,6 +8,7 @@ describe('Service: goodsListService', function () {
       $scope = $injector.get('$rootScope').$new();
       goodsListService = $injector.get('GoodsListService');
       $httpBackend = $injector.get('$httpBackend');
+      $http = $injector.get('$http');
     });
     goodsList = [
       {id: '5', name: '5', unit: '5', price: '5', category: '5' },
@@ -33,5 +34,11 @@ describe('Service: goodsListService', function () {
       expect(data).toEqual(goodsList);
     });
     $httpBackend.flush();
+  });
+
+  it('editGoods: should http.put be called', function () {
+    spyOn($http, 'put');
+    goodsListService.editGoods({id: '5', name: '5', unit: '5', price: '5', category: '8' });
+    expect($http.put).toHaveBeenCalled();
   });
 });
