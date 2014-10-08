@@ -36,7 +36,7 @@
       };
 
       this.addCategory = function (category) {
-        $http.post('api/categories', {data: category}).success();
+        $http.post('api/categories', {data: category});
       };
 
       this.storeCategory = function (category) {
