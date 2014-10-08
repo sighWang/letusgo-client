@@ -26,7 +26,7 @@ describe('Service: categoryService', function () {
     categoryService.editCategory({id: '4', name: '4'});
     expect($http.put).toHaveBeenCalled();
   });
-
+  //TODO:need to be write
   it('removeCategory: categorys should be delete one', function () {
     spyOn(categoryService, 'removeCategory').and.callFake(function (callback) {
       callback(true);
