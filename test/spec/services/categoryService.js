@@ -27,16 +27,6 @@ describe('Service: categoryService', function () {
     expect($http.put).toHaveBeenCalled();
   });
 
-  it('editCategorys: categorys should be uodate', function () {
-    spyOn(categoryService, 'editCategory');
-    categoryService.editCategory([
-      {id: '4', name: '4'}
-    ]);
-    expect(categoryService.editCategory).toHaveBeenCalledWith([
-      {id: '4', name: '4'}
-    ]);
-  });
-
   it('removeCategory: categorys should be delete one', function () {
     spyOn(categoryService, 'removeCategory').and.callFake(function (callback) {
       callback(true);
