@@ -1,6 +1,6 @@
 'use strict';
 describe('Service: goodsListService', function () {
-  var goodsListService, $scope, $httpBackend;
+  var goodsListService, $scope, $httpBackend, goodsList;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -9,6 +9,10 @@ describe('Service: goodsListService', function () {
       goodsListService = $injector.get('GoodsListService');
       $httpBackend = $injector.get('$httpBackend');
     });
+    goodsList = [
+      {id: '5', name: '5', unit: '5', price: '5', category: '5' },
+      {id: '6', name: '6', unit: '6', price: '6', category: '6' }
+    ];
   });
 
   afterEach(function () {
@@ -16,7 +20,7 @@ describe('Service: goodsListService', function () {
   });
 
   it('goodsList: should be get goodsList', function () {
-    $httpBackend.expectGET('/api/items').respond([0, 1]);
+    $httpBackend.expectGET('/api/items').respond(goodsList);
     goodsListService.getGoodslist(function (data) {
       expect(data.length).toBe(2);
     });
@@ -24,9 +28,9 @@ describe('Service: goodsListService', function () {
   });
 
   it('getGoods: should return a goods', function () {
-    $httpBackend.expectGET('/api/items/item').respond([0, 1]);
+    $httpBackend.expectGET('/api/items/item').respond(goodsList);
     goodsListService.getGoods('item', function (data) {
-      expect(data).toEqual([0, 1]);
+      expect(data).toEqual(goodsList);
     });
     $httpBackend.flush();
   });
