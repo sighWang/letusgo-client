@@ -1,6 +1,6 @@
 'use strict';
 describe('Service: categoryService', function () {
-  var categoryService, $scope, $httpBackend, categorieyList, $http;
+  var categoryService, $scope, $httpBackend, categoryList, $http;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -11,13 +11,13 @@ describe('Service: categoryService', function () {
       $http = $injector.get('$http');
     });
 
-    categorieyList = [ {id:'1', name: '饮料'}, {id:'2', name: '水果'}, {id:'3', name: '运动器材'}];
+    categoryList = [ {id:'1', name: '饮料'}, {id:'2', name: '水果'}, {id:'3', name: '运动器材'}];
   });
 
   it('categorys: should get categorie', function () {
-    $httpBackend.expectGET('/api/customItems/').respond(categorieyList);
+    $httpBackend.expectGET('/api/customItems/').respond(categoryList);
     categoryService.getCategories(function (categories) {
-      expect(categories).toEqual(categorieyList);
+      expect(categories).toEqual(categoryList);
     });
   });
 
