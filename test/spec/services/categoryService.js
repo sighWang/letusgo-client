@@ -1,6 +1,6 @@
 'use strict';
 describe('Service: categoryService', function () {
-  var categoryService, $scope, $httpBackend, categoryList, $http;
+  var categoryService, $scope, $httpBackend, categoryList, $http, goodsList;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -10,7 +10,10 @@ describe('Service: categoryService', function () {
       categoryService = $injector.get('CategoryService');
       $http = $injector.get('$http');
     });
-
+    goodsList = [
+      {id: '5', name: '5', unit: '5', price: '5', category: '5' },
+      {id: '6', name: '6', unit: '6', price: '6', category: '6' }
+    ];
     categoryList = [ {id:'1', name: '饮料'}, {id:'2', name: '水果'}, {id:'3', name: '运动器材'}];
   });
 
@@ -28,13 +31,12 @@ describe('Service: categoryService', function () {
   });
   //TODO:need to be write
   it('removeCategory: categorys should be delete one', function () {
-    spyOn(categoryService, 'removeCategory').and.callFake(function (callback) {
-      callback(true);
+    var customGoods = {id: '5', name: '5', unit: '5', price: '7', category: '5' };
+    spyOn($http, 'delete');
+    $httpBackend.expectGET('/api/items').respond(goodsList);
+    categoryService.removeCategory(customGoods, function (deleteAble) {
+      expect(deleteAble).toEqual(false);
     });
-    categoryService.removeCategory(function () {
-
-    });
-    expect(categoryService.removeCategory).toHaveBeenCalled();
   });
 
   it('addCategory:categorys should be add one', function () {
