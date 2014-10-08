@@ -27,11 +27,11 @@
       };
 
       this.addGoods = function (goods) {
-        $http.post('/api/items', {data: goods}).success();
+        $http.post('/api/items', {data: goods});
       };
 
       this.removeGoods = function (goods) {
-        $http.delete('api/items/' + goods.id).success();
+        $http.delete('api/items/' + goods.id);
       };
     });
 })(window._);
