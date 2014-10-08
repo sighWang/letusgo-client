@@ -41,4 +41,11 @@ describe('Service: goodsListService', function () {
     goodsListService.editGoods({id: '5', name: '5', unit: '5', price: '5', category: '8' });
     expect($http.put).toHaveBeenCalled();
   });
+
+  it('addGoods: should http.post be called', function () {
+    var goods = {id: '5', name: '5', unit: '5', price: '5', category: '8' };
+    spyOn($http, 'post');
+    goodsListService.addGoods(goods);
+    expect($http.post).toHaveBeenCalledWith('/api/items', {data: goods});
+  })
 });
