@@ -1,6 +1,6 @@
 'use strict';
 describe('Service: categoryService', function () {
-  var categoryService, $scope, $httpBackend;
+  var categoryService, $scope, $httpBackend, categorieyList;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -9,39 +9,46 @@ describe('Service: categoryService', function () {
       $httpBackend = $injector.get('$httpBackend');
       categoryService = $injector.get('CategoryService');
     });
+
+    categorieyList = [ {id:'1', name: '饮料'}, {id:'2', name: '水果'}, {id:'3', name: '运动器材'}];
   });
 
-  it('categorys: should get categories', function () {
-    var id = 'IED00000';
-    $httpBackend.expectPOST('/api/customItems/' + id).respond('success');
+  it('categorys: should get categorie', function () {
+    $httpBackend.expectGET('/api/customItems/').respond(categorieList);
     categoryService.getCategories(function (categories) {
-      expect(categories).toEqual('success');
+      expect(categories).toEqual(categorieyList);
     });
   });
-//
-//  it('editCategory: category should be update', function () {
-//    spyOn(categoryService, 'editCategorys');
-//    categoryService.editCategory({id: '4', name: '4'});
-//    expect(categoryService.editCategorys).toHaveBeenCalled();
-//  });
-//
-//  it('editCategorys: categorys should be uodate', function () {
-//    categoryService.editCategorys([
-//      {id: '4', name: '4'}
-//    ]);
-//    expect(localStorageService.set).toHaveBeenCalledWith('categorys', [
-//      {id: '4', name: '4'}
-//    ]);
-//  });
-//
-//  it('removeCategory: categorys should be delete one', function () {
-//    var length = categoryService.categorys.length;
-//    categoryService.removeCategory({id: '4', name: '4'});
-//    expect(categoryService.categorys.length).toEqual(length - 1);
-//  });
-//  it('addCategory:categorys should be add one', function () {
-//    var length = categoryService.categorys.length;
-//    categoryService.addCategory({id: '4', name: '4'});
-//    expect(categoryService.categorys.length).toEqual(length + 1);
-//  });
+
+  it('editCategory: category should be update', function () {
+    spyOn(categoryService, 'editCategory');
+    categoryService.editCategory({id: '4', name: '4'});
+    expect(categoryService.editCategory).toHaveBeenCalled();
+  });
+
+  it('editCategorys: categorys should be uodate', function () {
+    spyOn(categoryService, 'editCategory');
+    categoryService.editCategory([
+      {id: '4', name: '4'}
+    ]);
+    expect(categoryService.editCategory).toHaveBeenCalledWith([
+      {id: '4', name: '4'}
+    ]);
+  });
+
+  it('removeCategory: categorys should be delete one', function () {
+    spyOn(categoryService, 'removeCategory').and.callFake(function (callback) {
+      callback(true);
+    });
+    categoryService.removeCategory(function () {
+
+    });
+    expect(categoryService.removeCategory).toHaveBeenCalled();
+  });
+
+  it('addCategory:categorys should be add one', function () {
+    spyOn(categoryService, 'addCategory');
+    categoryService.addCategory({id: '4', name: '4'});
+    expect(categoryService.addCategory).toHaveBeenCalledWith({id: '4', name: '4'});
+  });
 });
