@@ -43,5 +43,13 @@ describe('Service: categoryService', function () {
     expect($http.post).toHaveBeenCalled();
   });
 
-  
+  it('should category.temporaryCategory  define', function () {
+    categoryService.storeCategory({id: '4', name: '4'});
+    expect(categoryService.temporaryCategory).toEqual({id: '4', name: '4'});
+  });
+
+  it('should get correct temporaryCategory', function () {
+    categoryService.storeCategory({id: '4', name: '4'});
+    expect(categoryService.getStoreCategory()).toEqual({id: '4', name: '4'});
+  })
 });
