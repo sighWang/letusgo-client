@@ -23,7 +23,7 @@
       };
 
       this.editGoods = function (item) {
-        $http.put('/api/items/' + JSON.stringify(item)).success();
+        $http.put('/api/items/' + JSON.stringify(item));
       };
 
       this.addGoods = function (goods) {
