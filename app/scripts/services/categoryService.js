@@ -23,7 +23,7 @@
       };
 
       this.editCategory = function (category) {
-        $http.put('/api/categories/' + JSON.stringify(category)).success();
+        $http.put('/api/categories/' + JSON.stringify(category));
       };
 
       this.removeCategory = function (category, callback) {
