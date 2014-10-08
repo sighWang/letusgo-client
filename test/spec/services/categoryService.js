@@ -38,8 +38,10 @@ describe('Service: categoryService', function () {
   });
 
   it('addCategory:categorys should be add one', function () {
-    spyOn(categoryService, 'addCategory');
+    spyOn($http, 'post');
     categoryService.addCategory({id: '4', name: '4'});
-    expect(categoryService.addCategory).toHaveBeenCalledWith({id: '4', name: '4'});
+    expect($http.post).toHaveBeenCalled();
   });
+
+  
 });
