@@ -38,6 +38,7 @@ describe('Controller: categoryManagageCtrl', function () {
       $scope.removeItem({id: '3', name: '4'});
       expect(categoryService.removeCategory).toHaveBeenCalled();
       expect(categoryService.getCategories).toHaveBeenCalled();
+      expect($scope.tip).toEqual('');
     });
 
     it('shoulf faild remove Item', function () {
@@ -48,7 +49,7 @@ describe('Controller: categoryManagageCtrl', function () {
       createController();
       $scope.removeItem({id: '4', name: '4'});
       expect(categoryService.removeCategory).not.toHaveBeenCalled();
-
+      expect($scope.tip).toEqual('该分类下存在商品，无法删除');
     });
   });
 });
