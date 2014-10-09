@@ -8,24 +8,14 @@ angular.module('letusgoApp')
       CategoryService.storeCategory(category);
     };
 
-//    $scope.removeItem = function (category) {
-//      CategoryService.removeCategory(category, function (removed) {
-//        if (removed) {
-//          updateCategories();
-//        }
-//        else {
-//          $('#myModal').modal({});
-//        }
-//      });
-//    };
-
     $scope.removeItem = function (category) {
       CategoryService.ableRemove(category, function (removed) {
         if(removed){
+          $scope.tip = '';
           CategoryService.removeCategory(category);
         }
         else{
-          $('#myModal').modal({});
+          $scope.tip = '该分类下存在商品，无法删除';
         }
       });
     };
