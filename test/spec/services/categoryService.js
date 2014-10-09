@@ -29,14 +29,12 @@ describe('Service: categoryService', function () {
     categoryService.editCategory({id: '4', name: '4'});
     expect($http.put).toHaveBeenCalled();
   });
-  //TODO:need to be write
+
   it('removeCategory: categorys should be delete one', function () {
-    var customGoods = {id: '5', name: '5', unit: '5', price: '7', category: '5' };
+    var category = {id:'1', name: '饮料'};
     spyOn($http, 'delete');
-    $httpBackend.expectGET('/api/items').respond(goodsList);
-    categoryService.removeCategory(customGoods, function (deleteAble) {
-      expect(deleteAble).toEqual(false);
-    });
+    categoryService.removeCategory(category);
+    expect($http.delete).toHaveBeenCalledWith('api/categories/' + category.id);
   });
 
   it('addCategory:categorys should be add one', function () {

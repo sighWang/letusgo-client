@@ -29,11 +29,11 @@ describe('Controller: categoryManagageCtrl', function () {
     });
 
     it('remove Item', function () {
-      spyOn(categoryService, 'removeCategory').and.callFake(function (category, callback) {
+      spyOn(categoryService, 'ableRemove').and.callFake(function (category, callback) {
         callback(true);
       });
       spyOn(categoryService, 'getCategories');
-
+      spyOn(categoryService, 'removeCategory');
       createController();
       $scope.removeItem({id: '3', name: '4'});
       expect(categoryService.removeCategory).toHaveBeenCalled();
@@ -41,13 +41,14 @@ describe('Controller: categoryManagageCtrl', function () {
     });
 
     it('shoulf faild remove Item', function () {
-      spyOn(categoryService, 'removeCategory').and.callFake(function (category, callback) {
-        callback(true);
+      spyOn(categoryService, 'ableRemove').and.callFake(function (category, callback) {
+        callback(false);
       });
-
+      spyOn(categoryService, 'removeCategory');
       createController();
-      $scope.removeItem({id: '', name: ''});
-      expect(categoryService.removeCategory).toHaveBeenCalled();
+      $scope.removeItem({id: '4', name: '4'});
+      expect(categoryService.removeCategory).not.toHaveBeenCalled();
+
     });
   });
 });
