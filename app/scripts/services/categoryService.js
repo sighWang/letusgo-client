@@ -3,18 +3,6 @@
   angular.module('letusgoApp')
     .service('CategoryService', function ($http) {
 
-//      function ableRemove(category, callback) {
-//        $http({method: 'GET', url: '/api/items'}).success(function (data) {
-//          var result = false;
-//          _.forEach(data, function (item) {
-//            var contain = _.contains(item, category.name);
-//            if (contain) {
-//              result = contain;
-//            }
-//          });
-//          callback(result);
-//        });
-//      }
       this.ableRemove = function (category, callback){
         $http({method: 'GET', url: '/api/items'}).success(function (data) {
           var result = false;
