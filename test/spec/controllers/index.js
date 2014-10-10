@@ -22,11 +22,14 @@ describe('Controller: indexCtrl', function () {
   });
 
   describe('index.js', function () {
-//
-//    it('$scope.cartNumber: should be a number', function () {
-//      createController();
-//      expect($scope.cartNumber).toEqual(jasmine.any(Number));
-//    });
+
+    it('$scope.cartNumber: should be a number', function () {
+      spyOn(CartServices, 'getCartNumber').and.callFake(function (callback) {
+        callback(4);
+      });
+      createController();
+      expect($scope.cartNumber).toEqual(4);
+    });
 
     it('it should catch updateCartNumber event', function () {
       createController();
