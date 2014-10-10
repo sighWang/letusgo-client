@@ -39,6 +39,13 @@ describe('Controller: EditGoodsCtrl', function () {
       expect(GoodsListService.editGoods).toHaveBeenCalledWith({id: 'ITEM000000', name: '可口可乐', unit: '瓶', price: 3.00, category: '饮料'});
     });
 
+    it('categoryshould be file edit', function () {
+          spyOn(GoodsListService, 'editGoods');
+          createController();
+          $scope.edit({id: 'ITEM000000', name: '可口可乐', unit: '瓶', price: 3.00});
+          expect($scope.tip).toEqual('请完整填写信息');
+        });
+
     it('$scope.goods is get', function () {
     var id = 'ITEM000000';
     var items = {name: '可口可乐', unit: '瓶', price: 3.00, category: '饮料'};
