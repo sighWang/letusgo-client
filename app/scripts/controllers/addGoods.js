@@ -3,12 +3,13 @@ angular.module('letusgoApp')
   .controller('AddGoodsCtrl', function ($scope, GoodsListService, CategoryService, $location) {
     $scope.add = function (goods) {
       if (!goods) {
-        $('#myModal').modal({});
+        $scope.tip = '请完整填写信息';
       }
       else if (!goods.id || !goods.name || !goods.unit || !goods.price || !goods.category) {
-        $('#myModal').modal({});
+        $scope.tip = '请完整填写信息';
       }
       else {
+        $scope.tip = '';
         GoodsListService.addGoods(goods);
         $scope.$emit('refreshGoodsList');
         $scope.$broadcast('refreshGoodsList');
