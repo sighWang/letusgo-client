@@ -20,6 +20,13 @@ describe('Controller: categoryManagageCtrl', function () {
   });
 
   describe('categoryManageCtrl add remove edit get', function () {
+    it('scope.categories should be define', function () {
+      spyOn(categoryService, 'getCategories').and.callFake(function (callback) {
+        callback('categoryies');
+      });
+      createController();
+      expect($scope.categories).toEqual('categoryies');
+    });
 
     it('category shoule store to categoryService', function () {
       createController();
