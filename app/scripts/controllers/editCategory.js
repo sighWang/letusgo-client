@@ -6,11 +6,12 @@ angular.module('letusgoApp')
 
     $scope.edit = function (category) {
       if (category.name) {
+        $scope.tip = '';
         CategoryService.editCategory(category);
         $location.path('/api/categories');
       }
       else {
-        $('#myModal').modal({});
+        $scope.tip = '请填写完整信息';
       }
     };
   });
