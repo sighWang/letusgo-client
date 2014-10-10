@@ -8,9 +8,10 @@ angular.module('letusgoApp')
 
     $scope.edit = function (goods) {
     if(!goods.id || !goods.name || !goods.unit || !goods.price || !goods.category){
-            $('#myModal').modal({});
+            $scope.tip = '请完整填写信息';
           }
           else{
+            $scope.tip = '';
             GoodsListService.editGoods(goods);
             $scope.$emit('refreshGoodsList');
             $location.path('/api/items/manage');
