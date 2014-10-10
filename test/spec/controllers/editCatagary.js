@@ -32,11 +32,11 @@ describe('Controller: EditCategoryCtrl', function () {
       expect(CategoryService.editCategory).toHaveBeenCalledWith({id: '4', name: '5'});
     });
 
-    it('CategoryService.editCategory  should be filed', function () {
+    it('CategoryService.editCategory  should be filed to add nul', function () {
       spyOn(CategoryService, 'editCategory');
       createController();
-//      $scope.edit({id: '4', name: false});
-//      expect(CategoryService.editCategory).not.toHaveBeenCalledWith({id: '4', name: '5'});
+      $scope.edit({id: '4'});
+      expect($scope.tip).toEqual('请填写完整信息');
     })
   });
 });
