@@ -10,11 +10,11 @@ angular.module('letusgoApp')
 
     $scope.removeItem = function (category) {
       CategoryService.ableRemove(category, function (removed) {
-        if(removed){
+        if (removed) {
           $scope.tip = '';
           CategoryService.removeCategory(category);
         }
-        else{
+        else {
           $scope.tip = '该分类下存在商品，无法删除';
         }
       });

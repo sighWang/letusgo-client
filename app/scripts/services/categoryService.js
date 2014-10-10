@@ -3,7 +3,7 @@
   angular.module('letusgoApp')
     .service('CategoryService', function ($http) {
 
-      this.ableRemove = function (category, callback){
+      this.ableRemove = function (category, callback) {
         $http({method: 'GET', url: '/api/items'}).success(function (data) {
           var result = false;
           _.forEach(data, function (item) {
@@ -27,7 +27,7 @@
       };
 
       this.removeCategory = function (category) {
-          $http.delete('api/categories/' + category.id);
+        $http.delete('api/categories/' + category.id);
       };
 
       this.addCategory = function (category) {
