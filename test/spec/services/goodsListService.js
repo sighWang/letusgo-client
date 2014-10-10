@@ -54,5 +54,15 @@ describe('Service: goodsListService', function () {
     spyOn($http, 'delete');
     goodsListService.removeGoods(goods);
     expect($http.delete).toHaveBeenCalledWith('api/items/' + goods.id);
-  })
+  });
+
+  it('should store goodsId ', function () {
+    goodsListService.storeGoodsId('goodsId');
+    expect(goodsListService.temporaryId).toEqual('goodsId');
+  });
+
+  it('should get temporaryId', function () {
+    goodsListService.storeGoodsId('goodsId');
+    expect(goodsListService.getStoreGoodsId()).toEqual('goodsId');
+  });
 });
