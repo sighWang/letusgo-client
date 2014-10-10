@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Controller: EditGoodsCtrl', function () {
-  var $scope, createController, GoodsListService, $controller;
+  var $scope, createController, GoodsListService, $controller, CategoryService;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -11,7 +11,7 @@ describe('Controller: EditGoodsCtrl', function () {
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
       GoodsListService = $injector.get('GoodsListService');
-
+      CategoryService = $injector.get('CategoryService');
       createController = function () {
         return $controller('EditGoodsCtrl', {
           $scope: $scope
@@ -21,6 +21,17 @@ describe('Controller: EditGoodsCtrl', function () {
   });
 
   describe('editGoods.js', function () {
+
+    it('scope.categories shoule be define', function () {
+      spyOn(CategoryService, 'getCategories').and.callFake(function(callback){
+          callback('category');
+       });
+      createController();
+      CategoryService.getCategories(function(data){
+          expect($scope.categories).toEqual(data);
+       });
+    });
+
     it('categoryService.editCategory should be called', function () {
       spyOn(GoodsListService, 'editGoods');
       createController();
@@ -34,13 +45,10 @@ describe('Controller: EditGoodsCtrl', function () {
      spyOn(GoodsListService,'getGoods').and.callFake(function(id, callback){
             callback(items);
           });
-
           createController();
-
           GoodsListService.getGoods(id, function(data){
             expect($scope.goods).toEqual(data);
           });
-
     })
   });
 });
