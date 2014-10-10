@@ -35,5 +35,13 @@ describe('Controller: ListmanageCtrl', function () {
       $scope.removeItem(badminton);
       expect(goodsListService.removeGoods).toHaveBeenCalledWith(badminton);
     });
+
+    it('$scope.goodsList should to be define', function () {
+      spyOn(goodsListService, 'getGoodslist').and.callFake(function (callback) {
+        callback('goodsList');
+      });
+      createController();
+      expect($scope.goodsList).toEqual('goodsList');
+    })
   });
 });
