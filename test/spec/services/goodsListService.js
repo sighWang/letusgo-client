@@ -65,4 +65,14 @@ describe('Service: goodsListService', function () {
     goodsListService.storeGoodsId('goodsId');
     expect(goodsListService.getStoreGoodsId()).toEqual('goodsId');
   });
+
+  it('isContain: should contain', function () {
+    var result = goodsListService.isContain(goodsList, '5');
+    expect(result).toEqual(true);
+  });
+
+  it('isContain: should not contain', function () {
+    var result = goodsListService.isContain(goodsList, '4');
+    expect(result).toEqual(false);
+  });
 });
