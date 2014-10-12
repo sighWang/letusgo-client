@@ -33,5 +33,16 @@
       this.removeGoods = function (goods) {
         $http.delete('api/items/' + goods.id);
       };
+
+      this.isContain = function (data, category) {
+        var result = false;
+        _.forEach(data, function (item) {
+          var contain = _.contains(item, category);
+          if (contain) {
+            result = contain;
+          }
+        });
+        return result;
+      }
     });
 })(window._);

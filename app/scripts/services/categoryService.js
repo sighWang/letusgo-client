@@ -2,19 +2,9 @@
 (function (_) {
   angular.module('letusgoApp')
     .service('CategoryService', function ($http, GoodsListService) {
-      function isContain(data, category){
-        var result = false;
-        _.forEach(data, function (item) {
-          var contain = _.contains(item, category.name);
-          if (contain) {
-            result = contain;
-          }
-        });
-        return result;
-      }
       this.ableRemove = function (category, callback) {
         GoodsListService.getGoodslist(function (data) {
-          callback(isContain(data, category));
+          callback(GoodsListService.isContain(data, category.name));
         });
       };
 
