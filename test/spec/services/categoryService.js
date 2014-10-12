@@ -57,7 +57,7 @@ describe('Service: categoryService', function () {
     categoryService.storeCategory({id: '4', name: '4'});
     expect(categoryService.getStoreCategory()).toEqual({id: '4', name: '4'});
   });
-
+  //TODO need to be rewrite
   it('ableRemove: should be able', function () {
     var category = {id: '4', name: '6'};
     spyOn(goodsListService, 'getGoodslist').and.callFake(function (callback) {
