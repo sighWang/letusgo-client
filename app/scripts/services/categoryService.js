@@ -1,18 +1,20 @@
 'use strict';
 (function (_) {
   angular.module('letusgoApp')
-    .service('CategoryService', function ($http) {
-
+    .service('CategoryService', function ($http, GoodsListService) {
+      function isContain(data, category){
+        var result = false;
+        _.forEach(data, function (item) {
+          var contain = _.contains(item, category.name);
+          if (contain) {
+            result = contain;
+          }
+        });
+        return result;
+      }
       this.ableRemove = function (category, callback) {
-        $http({method: 'GET', url: '/api/items'}).success(function (data) {
-          var result = false;
-          _.forEach(data, function (item) {
-            var contain = _.contains(item, category.name);
-            if (contain) {
-              result = contain;
-            }
-          });
-          callback(result);
+        GoodsListService.getGoodslist(function (data) {
+          callback(isContain(data, category));
         });
       };
 

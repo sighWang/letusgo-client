@@ -1,6 +1,6 @@
 'use strict';
 describe('Service: categoryService', function () {
-  var categoryService, $scope, $httpBackend, categoryList, $http, goodsList;
+  var categoryService, $scope, $httpBackend, categoryList, $http, goodsList, goodsListService;
 
   beforeEach(function () {
     module('letusgoApp');
@@ -8,13 +8,18 @@ describe('Service: categoryService', function () {
       $scope = $injector.get('$rootScope').$new();
       $httpBackend = $injector.get('$httpBackend');
       categoryService = $injector.get('CategoryService');
+      goodsListService = $injector.get('GoodsListService');
       $http = $injector.get('$http');
     });
     goodsList = [
       {id: '5', name: '5', unit: '5', price: '5', category: '5' },
       {id: '6', name: '6', unit: '6', price: '6', category: '6' }
     ];
-    categoryList = [ {id:'1', name: '饮料'}, {id:'2', name: '水果'}, {id:'3', name: '运动器材'}];
+    categoryList = [
+      {id: '1', name: '饮料'},
+      {id: '2', name: '水果'},
+      {id: '3', name: '运动器材'}
+    ];
   });
 
   it('categorys: should get categorie', function () {
@@ -31,7 +36,7 @@ describe('Service: categoryService', function () {
   });
 
   it('removeCategory: categorys should be delete one', function () {
-    var category = {id:'1', name: '饮料'};
+    var category = {id: '1', name: '饮料'};
     spyOn($http, 'delete');
     categoryService.removeCategory(category);
     expect($http.delete).toHaveBeenCalledWith('api/categories/' + category.id);
@@ -51,5 +56,35 @@ describe('Service: categoryService', function () {
   it('should get correct temporaryCategory', function () {
     categoryService.storeCategory({id: '4', name: '4'});
     expect(categoryService.getStoreCategory()).toEqual({id: '4', name: '4'});
-  })
+  });
+
+  it('ableRemove: should be able', function () {
+    var category = {id: '4', name: '6'};
+    spyOn(goodsListService, 'getGoodslist').and.callFake(function (callback) {
+      callback(isContain(goodsList, category));
+    });
+    categoryService.ableRemove(category, function (data) {
+      expect(data).toEqual(false);
+    });
+  });
+
+  it('ableRemove: should be able', function () {
+    var category = {id: '4', name: '4'};
+    spyOn(goodsListService, 'getGoodslist').and.callFake(function (callback) {
+      callback(isContain(goodsList, category));
+    });
+    categoryService.ableRemove(category, function (data) {
+      expect(data).toEqual(false);
+    });
+  });
+  function isContain(data, category){
+    var result = false;
+    _.forEach(data, function (item) {
+      var contain = _.contains(item, category.name);
+      if (contain) {
+        result = contain;
+      }
+    });
+    return result;
+  }
 });
