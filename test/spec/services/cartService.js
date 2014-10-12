@@ -29,7 +29,7 @@
     it('test getCategory: total should be a number', function () {
       var resData = {categories: 'category', total: 'total'};
       $httpBackend.expectGET('/api/customItems').respond(200, resData);
-      cartService.getCategory(function (data, total){
+      cartService.getCategory(function (data, total) {
         expect(data).toBe('category');
         expect(total).toBe('total');
       });
