@@ -61,30 +61,12 @@ describe('Service: categoryService', function () {
   it('ableRemove: should be able', function () {
     var category = {id: '4', name: '6'};
     spyOn(goodsListService, 'getGoodslist').and.callFake(function (callback) {
-      callback(isContain(goodsList, category));
+      var result = goodsListService.isContain(goodsList, category.name);
+      callback(result);
     });
     categoryService.ableRemove(category, function (data) {
       expect(data).toEqual(false);
     });
-  });
 
-  it('ableRemove: should be able', function () {
-    var category = {id: '4', name: '4'};
-    spyOn(goodsListService, 'getGoodslist').and.callFake(function (callback) {
-      callback(isContain(goodsList, category));
-    });
-    categoryService.ableRemove(category, function (data) {
-      expect(data).toEqual(false);
-    });
   });
-  function isContain(data, category){
-    var result = false;
-    _.forEach(data, function (item) {
-      var contain = _.contains(item, category.name);
-      if (contain) {
-        result = contain;
-      }
-    });
-    return result;
-  }
 });
